@@ -1,15 +1,17 @@
 import { Injectable } from "@nestjs/common"
 import * as path from "path"
-
-export interface IConfig {
-  name: string
-  port: number
-}
+import { NodeEnv, parseNodeEnv } from "./env"
+import { IConfig } from "./config.interface"
+import { TypeOrmOptionsFactory } from "@nestjs/typeorm"
 
 @Injectable()
-export class ConfigService {
+export class ConfigService implements TypeOrmOptionsFactory {
   public config: Readonly<IConfig>
   public readonly mode: NodeEnv
+
+  createTypeOrmOptions() {
+    return this.config.database
+  }
 
   constructor() {
     this.mode = parseNodeEnv(process.env.NODE_ENV)
@@ -21,21 +23,5 @@ export class ConfigService {
 
   get isDevMode() {
     return this.mode === NodeEnv.Development
-  }
-}
-
-enum NodeEnv {
-  Production = "production",
-  Development = "development"
-}
-
-function parseNodeEnv(value: string) {
-  switch (value) {
-    case NodeEnv.Production:
-      return NodeEnv.Production
-    case NodeEnv.Development:
-      return NodeEnv.Development
-    default:
-      return NodeEnv.Development
   }
 }

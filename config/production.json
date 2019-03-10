@@ -1,4 +1,14 @@
 {
   "name": "etweb-prod",
-  "port": 8080
+  "port": 8080,
+  "database": {
+    "type": "mysql",
+    "host": "localhost",
+    "port": 3306,
+    "username": "root",
+    "password": "pwd",
+    "database": "etweb-prod",
+    "entities": ["{src,dist}/**/*.entity{.js,.ts}"],
+    "synchronize": true
+  }
 }
