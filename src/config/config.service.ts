@@ -3,10 +3,7 @@ import * as path from "path"
 
 export interface IConfig {
   name: string
-  server: {
-    port: number
-    address: string
-  }
+  port: number
 }
 
 @Injectable()
