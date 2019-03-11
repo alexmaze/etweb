@@ -6,7 +6,7 @@ import { WwwModule } from "./www/www.module"
 import { AccountModule } from "./account/account.module"
 import { ConfigService } from "./config/config.service"
 import { MainModule } from "./main/main.module"
-import { MediaModule } from './media/media.module';
+import { MediaModule } from "./media/media.module"
 
 @Module({
   imports: [
