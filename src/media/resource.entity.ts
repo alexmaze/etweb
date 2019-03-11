@@ -15,5 +15,5 @@ export class ResourceEntity {
   description: string
 
   @Column()
-  url: string
+  key: string
 }

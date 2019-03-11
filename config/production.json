@@ -10,5 +10,11 @@
     "database": "etweb-prod",
     "entities": ["{src,dist}/**/*.entity{.js,.ts}"],
     "synchronize": true
+  },
+  "oss": {
+    "bucket": "etweb-dev",
+    "accessKey": "",
+    "secretKey": "",
+    "domain": ""
   }
 }
