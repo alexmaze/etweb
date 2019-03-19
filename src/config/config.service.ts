@@ -3,14 +3,24 @@ import * as path from "path"
 import { NodeEnv, parseNodeEnv } from "./env"
 import { IConfig } from "./config.interface"
 import { TypeOrmOptionsFactory } from "@nestjs/typeorm"
+import { JwtOptionsFactory } from "@nestjs/jwt"
 
 @Injectable()
-export class ConfigService implements TypeOrmOptionsFactory {
+export class ConfigService implements TypeOrmOptionsFactory, JwtOptionsFactory {
   public config: Readonly<IConfig>
   public readonly mode: NodeEnv
 
   createTypeOrmOptions() {
     return this.config.database
+  }
+
+  createJwtOptions() {
+    return {
+      secretOrPrivateKey: this.config.jwt.secret,
+      signOptions: {
+        expiresIn: this.config.jwt.expiresIn
+      }
+    }
   }
 
   constructor() {

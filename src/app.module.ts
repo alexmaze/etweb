@@ -7,6 +7,7 @@ import { AccountModule } from "./account/account.module"
 import { ConfigService } from "./config/config.service"
 import { MainModule } from "./main/main.module"
 import { MediaModule } from "./media/media.module"
+import { AdminModule } from "./admin/admin.module"
 
 @Module({
   imports: [
@@ -17,7 +18,8 @@ import { MediaModule } from "./media/media.module"
     AccountModule,
     WwwModule,
     MainModule,
-    MediaModule
+    MediaModule,
+    AdminModule
   ],
   controllers: [AppController]
 })

@@ -16,5 +16,9 @@
     "accessKey": "",
     "secretKey": "",
     "domain": ""
+  },
+  "jwt": {
+    "expiresIn": "2h",
+    "secret": ""
   }
 }
