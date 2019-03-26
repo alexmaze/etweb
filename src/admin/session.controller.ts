@@ -11,18 +11,18 @@ import { AuthService } from "./auth.service"
 import { AuthGuard } from "@nestjs/passport"
 import { IRequest } from "./interfaces"
 
-@Controller("/api/admin/")
-export class AdminController {
+@Controller("/api/admin/session")
+export class SessionController {
   @Inject()
   private authService: AuthService
 
-  @Get("session")
+  @Get("/")
   @UseGuards(AuthGuard())
   session(@Req() request: IRequest) {
     return request.user
   }
 
-  @Post("session")
+  @Post("/")
   login(@Body() loginReq: ILoginRequest) {
     return this.authService.login(loginReq.email, loginReq.password)
   }

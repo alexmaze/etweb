@@ -1,5 +1,5 @@
 import { Module } from "@nestjs/common"
-import { AdminController } from "./admin.controller"
+import { SessionController } from "./session.controller"
 import { JwtModule } from "@nestjs/jwt"
 import { AuthService } from "./auth.service"
 import { JwtStrategy } from "./jwt.strategy"
@@ -18,6 +18,6 @@ import { ConfigService } from "src/config/config.service"
     AccountModule
   ],
   providers: [AuthService, JwtStrategy],
-  controllers: [AdminController]
+  controllers: [SessionController]
 })
 export class AdminModule {}
