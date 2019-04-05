@@ -7,6 +7,9 @@ import { PassportModule } from "@nestjs/passport"
 import { MainModule } from "../main/main.module"
 import { AccountModule } from "src/account/account.module"
 import { ConfigService } from "src/config/config.service"
+import { ArticleController } from "./article.controller"
+import { ResourceController } from "./resource.controller"
+import { MediaModule } from "src/media/media.module"
 
 @Module({
   imports: [
@@ -15,9 +18,10 @@ import { ConfigService } from "src/config/config.service"
       useExisting: ConfigService
     }),
     MainModule,
+    MediaModule,
     AccountModule
   ],
   providers: [AuthService, JwtStrategy],
-  controllers: [SessionController]
+  controllers: [SessionController, ArticleController, ResourceController]
 })
 export class AdminModule {}
