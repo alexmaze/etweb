@@ -81,7 +81,6 @@ export class MediaService {
     if (expireTime == null) {
       expireTime = new Date()
       expireTime.setHours(expireTime.getHours() + 1)
-      console.log(expireTime.toLocaleString())
     }
 
     return this.bucketManager.privateDownloadUrl(

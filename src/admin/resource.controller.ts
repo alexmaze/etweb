@@ -14,7 +14,8 @@ import {
   Query,
   Param,
   Delete,
-  Patch
+  Patch,
+  Logger
 } from "@nestjs/common"
 import { AuthService } from "./auth.service"
 import { AuthGuard } from "@nestjs/passport"
@@ -35,7 +36,7 @@ export class ResourceController {
       const data = await this.resourceService.upload(file)
       return data
     } catch (err) {
-      console.log(err)
+      Logger.log(err)
       throw err
     }
   }

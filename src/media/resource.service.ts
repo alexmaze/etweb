@@ -37,8 +37,6 @@ export class ResourceService {
       key
     })
 
-    console.log(key, item)
-
     if (!ignoreUrl) {
       item.withUrl(this.mediaService)
     }
