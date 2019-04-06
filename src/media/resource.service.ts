@@ -32,9 +32,9 @@ export class ResourceService {
     return res
   }
 
-  async getByKey(key: string, ignoreUrl?: boolean) {
+  async getById(id: number, ignoreUrl?: boolean) {
     const item = await this.resourceRepo.findOne({
-      key
+      id
     })
 
     if (!ignoreUrl) {
@@ -43,8 +43,8 @@ export class ResourceService {
     return item
   }
 
-  async update(key: string, description?: string) {
-    const item = await this.getByKey(key, true)
+  async update(id: number, description?: string) {
+    const item = await this.getById(id, true)
     if (description != null) {
       item.description = description
     }
@@ -52,10 +52,10 @@ export class ResourceService {
     return this.resourceRepo.save(item)
   }
 
-  async removeByKey(key: string) {
+  async removeById(id: number) {
     try {
-      await this.mediaService.deleteFile(key)
-      const item = await this.getByKey(key, true)
+      const item = await this.getById(id, true)
+      await this.mediaService.deleteFile(item.key)
       await this.resourceRepo.remove(item)
     } catch (err) {
       throw err

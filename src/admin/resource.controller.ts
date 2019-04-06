@@ -46,18 +46,18 @@ export class ResourceController {
     return this.resourceService.list(query)
   }
 
-  @Get("/:key")
-  show(@Param("key") key) {
-    return this.resourceService.getByKey(key)
+  @Get("/:id")
+  show(@Param("id") id) {
+    return this.resourceService.getById(parseInt(id, 10))
   }
 
-  @Patch("/:key")
-  update(@Param("key") key, @Body() { description }: ResourceEntity) {
-    return this.resourceService.update(key, description)
+  @Patch("/:id")
+  update(@Param("id") id, @Body() { description }: ResourceEntity) {
+    return this.resourceService.update(parseInt(id, 10), description)
   }
 
-  @Delete("/:key")
-  remove(@Param("key") key) {
-    return this.resourceService.removeByKey(key)
+  @Delete("/:id")
+  remove(@Param("id") id) {
+    return this.resourceService.removeById(parseInt(id, 10))
   }
 }

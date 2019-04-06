@@ -34,7 +34,9 @@ export class ResourceEntity {
   }
 
   withUrl(mediaService: MediaService) {
-    this.rawUrl = mediaService.getPublicUrl(this.key + "?imageslim")
+    this.rawUrl = mediaService.getPublicUrl(
+      this.key + "?imageView2/0/q/75|imageslim"
+    )
     this.thumbUrl = mediaService.getPublicUrl(
       this.key + "?imageView2/2/w/200/h/200/format/jpg/q/75|imageslim"
     )
