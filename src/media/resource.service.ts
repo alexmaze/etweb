@@ -2,7 +2,8 @@ import {
   Injectable,
   Inject,
   InternalServerErrorException,
-  UnauthorizedException
+  UnauthorizedException,
+  NotFoundException
 } from "@nestjs/common"
 import { InjectRepository } from "@nestjs/typeorm"
 import { ResourceEntity } from "./resource.entity"
@@ -32,10 +33,14 @@ export class ResourceService {
     return res
   }
 
-  async getById(id: number, ignoreUrl?: boolean) {
+  async show(id: number, ignoreUrl?: boolean) {
     const item = await this.resourceRepo.findOne({
       id
     })
+
+    if (item == null) {
+      throw new NotFoundException()
+    }
 
     if (!ignoreUrl) {
       item.withUrl(this.mediaService)
@@ -44,7 +49,7 @@ export class ResourceService {
   }
 
   async update(id: number, description?: string) {
-    const item = await this.getById(id, true)
+    const item = await this.show(id, true)
     if (description != null) {
       item.description = description
     }
@@ -52,9 +57,9 @@ export class ResourceService {
     return this.resourceRepo.save(item)
   }
 
-  async removeById(id: number) {
+  async remove(id: number) {
     try {
-      const item = await this.getById(id, true)
+      const item = await this.show(id, true)
       await this.mediaService.deleteFile(item.key)
       await this.resourceRepo.remove(item)
     } catch (err) {

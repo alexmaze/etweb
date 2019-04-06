@@ -4,22 +4,16 @@ import {
   Post,
   Body,
   Inject,
-  UseGuards,
-  Req,
   UseInterceptors,
   FileInterceptor,
   UploadedFile,
-  Response,
-  Res,
   Query,
   Param,
   Delete,
   Patch,
-  Logger
+  Logger,
+  ParseIntPipe
 } from "@nestjs/common"
-import { AuthService } from "./auth.service"
-import { AuthGuard } from "@nestjs/passport"
-import { IRequest } from "./interfaces"
 import { ResourceService } from "src/media/resource.service"
 import { IPageReq } from "src/lib/page"
 import { ResourceEntity } from "src/media/resource.entity"
@@ -47,17 +41,20 @@ export class ResourceController {
   }
 
   @Get("/:id")
-  show(@Param("id") id) {
-    return this.resourceService.getById(parseInt(id, 10))
+  show(@Param("id", ParseIntPipe) id) {
+    return this.resourceService.show(id)
   }
 
   @Patch("/:id")
-  update(@Param("id") id, @Body() { description }: ResourceEntity) {
-    return this.resourceService.update(parseInt(id, 10), description)
+  update(
+    @Param("id", ParseIntPipe) id,
+    @Body() { description }: ResourceEntity
+  ) {
+    return this.resourceService.update(id, description)
   }
 
   @Delete("/:id")
-  remove(@Param("id") id) {
-    return this.resourceService.removeById(parseInt(id, 10))
+  remove(@Param("id", ParseIntPipe) id) {
+    return this.resourceService.remove(id)
   }
 }

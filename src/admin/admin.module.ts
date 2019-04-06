@@ -10,6 +10,7 @@ import { ConfigService } from "src/config/config.service"
 import { ArticleController } from "./article.controller"
 import { ResourceController } from "./resource.controller"
 import { MediaModule } from "src/media/media.module"
+import { BannerController } from "./banner.controller"
 
 @Module({
   imports: [
@@ -22,6 +23,11 @@ import { MediaModule } from "src/media/media.module"
     AccountModule
   ],
   providers: [AuthService, JwtStrategy],
-  controllers: [SessionController, ArticleController, ResourceController]
+  controllers: [
+    SessionController,
+    ArticleController,
+    ResourceController,
+    BannerController
+  ]
 })
 export class AdminModule {}
