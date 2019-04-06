@@ -60,6 +60,8 @@ export class ResourceService {
     } catch (err) {
       throw err
     }
+
+    return {}
   }
 
   async upload(file: File) {
