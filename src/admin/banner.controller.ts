@@ -6,10 +6,12 @@ import {
   Param,
   Delete,
   Patch,
-  ParseIntPipe
+  ParseIntPipe,
+  Post
 } from "@nestjs/common"
 import { BannerService } from "src/main/banner.service"
 import { BannerEntity } from "src/main/banner.entity"
+import { create } from "domain"
 
 @Controller("/api/admin/banner")
 export class BannerController {
@@ -19,6 +21,11 @@ export class BannerController {
   @Get("/")
   list() {
     return this.bannerService.all()
+  }
+
+  @Post("/")
+  create(@Body() data: BannerEntity) {
+    return this.bannerService.create(data)
   }
 
   @Get("/:id")

@@ -11,6 +11,7 @@ import { ArticleController } from "./article.controller"
 import { ResourceController } from "./resource.controller"
 import { MediaModule } from "src/media/media.module"
 import { BannerController } from "./banner.controller"
+import { VariableController } from "./variable.controller"
 
 @Module({
   imports: [
@@ -27,7 +28,8 @@ import { BannerController } from "./banner.controller"
     SessionController,
     ArticleController,
     ResourceController,
-    BannerController
+    BannerController,
+    VariableController
   ]
 })
 export class AdminModule {}

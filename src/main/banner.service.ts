@@ -22,6 +22,10 @@ export class BannerService {
     return items
   }
 
+  async create(data: BannerEntity) {
+    return this.bannerRepo.save(data)
+  }
+
   async show(id: number) {
     const item = await this.bannerRepo.findOne({
       id

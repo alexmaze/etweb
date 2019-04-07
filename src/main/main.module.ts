@@ -8,6 +8,7 @@ import { LookEntity } from "./look.entity"
 import { PositionEntity } from "./position.entity"
 import { ProductEntity } from "./product.entity"
 import { BannerService } from "./banner.service"
+import { VariableService } from "./variable.service"
 
 @Module({
   imports: [
@@ -21,7 +22,7 @@ import { BannerService } from "./banner.service"
       VariableEntity
     ])
   ],
-  providers: [BannerService],
-  exports: [BannerService]
+  providers: [BannerService, VariableService],
+  exports: [BannerService, VariableService]
 })
 export class MainModule {}
