@@ -3,6 +3,7 @@ import { Repository } from "typeorm"
 export interface IPageReq {
   page: number
   size: number
+  query?: string
 }
 
 export interface IPageRes<T> extends IPageReq {

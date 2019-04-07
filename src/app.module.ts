@@ -17,8 +17,8 @@ import { AdminModule } from "./admin/admin.module"
     }),
     AccountModule,
     WwwModule,
-    MainModule,
     MediaModule,
+    MainModule,
     AdminModule
   ],
   controllers: [AppController]

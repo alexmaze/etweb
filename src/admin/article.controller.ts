@@ -1,30 +1,48 @@
 import {
   Controller,
   Get,
-  Post,
   Body,
   Inject,
-  UseGuards,
-  Req
+  Param,
+  Delete,
+  Patch,
+  ParseIntPipe,
+  Post,
+  Query
 } from "@nestjs/common"
-import { AuthGuard } from "@nestjs/passport"
-import { InjectRepository } from "@nestjs/typeorm"
+import { ArticleService } from "src/main/article.service"
 import { ArticleEntity } from "src/main/article.entity"
-import { Repository } from "typeorm"
-import { AccountEntity } from "src/account/account.entity"
+import { IPageReq } from "src/lib/page"
 
 @Controller("/api/admin/article")
-// @UseGuards(AuthGuard())
 export class ArticleController {
-  constructor(
-    @InjectRepository(ArticleEntity)
-    private readonly articleRepo: Repository<AccountEntity>
-  ) {}
+  @Inject()
+  service: ArticleService
 
   @Get("/")
-  async list() {
-    // this.articleRepo.
-    // console.log(await this.articleRepo.count())
-    return "hello"
+  // TODO @UseGuards(AuthGuard())
+  list(@Query() query: IPageReq) {
+    return this.service.list(query)
+  }
+
+  @Post("/")
+  create(@Body() data: ArticleEntity) {
+    return this.service.create(data)
+  }
+
+  @Get("/:id")
+  show(@Param("id", ParseIntPipe) id: number) {
+    return this.service.show(id)
+  }
+
+  @Patch("/:id")
+  update(@Param("id", ParseIntPipe) id, @Body() data: ArticleEntity) {
+    data.id = id
+    return this.service.update(data)
+  }
+
+  @Delete("/:id")
+  remove(@Param("id", ParseIntPipe) id) {
+    return this.service.remove(id)
   }
 }
