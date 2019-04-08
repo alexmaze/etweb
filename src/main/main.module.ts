@@ -11,6 +11,10 @@ import { BannerService } from "./banner.service"
 import { VariableService } from "./variable.service"
 import { MediaModule } from "src/media/media.module"
 import { ArticleService } from "./article.service"
+import { HonorService } from "./honor.service"
+import { LookService } from "./look.service"
+import { ProductService } from "./product.service"
+import { PositionService } from "./position.service"
 
 @Module({
   imports: [
@@ -25,7 +29,23 @@ import { ArticleService } from "./article.service"
     ]),
     MediaModule
   ],
-  providers: [BannerService, VariableService, ArticleService],
-  exports: [BannerService, VariableService, ArticleService]
+  providers: [
+    BannerService,
+    VariableService,
+    ArticleService,
+    HonorService,
+    LookService,
+    ProductService,
+    PositionService
+  ],
+  exports: [
+    BannerService,
+    VariableService,
+    ArticleService,
+    HonorService,
+    LookService,
+    ProductService,
+    PositionService
+  ]
 })
 export class MainModule {}

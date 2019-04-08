@@ -10,28 +10,26 @@ import {
   Post,
   Query
 } from "@nestjs/common"
-import { ArticleService } from "src/main/article.service"
-import { ArticleEntity, ArticleType } from "src/main/article.entity"
+import { ProductService } from "src/main/product.service"
+import { ProductEntity } from "src/main/product.entity"
 import { IPageReq } from "src/lib/page"
 
-@Controller("/api/admin/article")
-export class ArticleController {
+@Controller("/api/admin/product")
+export class ProductController {
   @Inject()
-  service: ArticleService
+  service: ProductService
 
   @Get("/")
   // TODO @UseGuards(AuthGuard())
   list(
     @Query()
-    query: IPageReq & {
-      type?: ArticleType
-    }
+    query: IPageReq
   ) {
-    return this.service.list(query, query.type)
+    return this.service.list(query)
   }
 
   @Post("/")
-  create(@Body() data: ArticleEntity) {
+  create(@Body() data: ProductEntity) {
     return this.service.create(data)
   }
 
@@ -41,7 +39,7 @@ export class ArticleController {
   }
 
   @Patch("/:id")
-  update(@Param("id", ParseIntPipe) id, @Body() data: ArticleEntity) {
+  update(@Param("id", ParseIntPipe) id, @Body() data: ProductEntity) {
     data.id = id
     return this.service.update(data)
   }

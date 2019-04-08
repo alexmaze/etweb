@@ -2,32 +2,26 @@ import { Injectable, Inject, NotFoundException } from "@nestjs/common"
 import { InjectRepository } from "@nestjs/typeorm"
 import { Repository } from "typeorm"
 import { MediaService } from "src/media/media.service"
-import { ArticleEntity, ArticleType } from "./article.entity"
 import { IPageReq, Pager } from "src/lib/page"
+import { LookEntity } from "./look.entity"
 
 @Injectable()
-export class ArticleService {
+export class LookService {
   @Inject()
   mediaService: MediaService
 
   constructor(
-    @InjectRepository(ArticleEntity)
-    private readonly repo: Repository<ArticleEntity>
+    @InjectRepository(LookEntity)
+    private readonly repo: Repository<LookEntity>
   ) {}
 
-  async list(params: IPageReq, type?: ArticleType) {
-    const res = await new Pager(params, this.repo).getPage(
-      !!type
-        ? {
-            type
-          }
-        : null
-    )
+  async list(params: IPageReq) {
+    const res = await new Pager(params, this.repo).getPage()
 
     if (res && res.data) {
       for (const item of res.data) {
-        if (item.cover != null) {
-          item.cover.withUrl(this.mediaService)
+        if (item.resource != null) {
+          item.resource.withUrl(this.mediaService)
         }
       }
     }
@@ -35,10 +29,7 @@ export class ArticleService {
     return res
   }
 
-  async create(data: ArticleEntity) {
-    data.createdAt = new Date()
-    data.updatedAt = data.createdAt
-    data.viewCount = 0
+  async create(data: LookEntity) {
     return this.repo.save(data)
   }
 
@@ -48,21 +39,21 @@ export class ArticleService {
         id
       },
       {
-        relations: ["cover"]
+        relations: ["resource"]
       }
     )
 
     if (item == null) {
       throw new NotFoundException()
     }
-    if (item.cover != null) {
-      item.cover.withUrl(this.mediaService)
+    if (item.resource != null) {
+      item.resource.withUrl(this.mediaService)
     }
 
     return item
   }
 
-  async update(data: ArticleEntity) {
+  async update(data: LookEntity) {
     const item = await this.show(data.id)
 
     return this.repo.save(data)

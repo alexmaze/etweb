@@ -1,13 +1,7 @@
 /**
  * 文章：新闻咨询、经验分享
  */
-import {
-  Entity,
-  Column,
-  PrimaryGeneratedColumn,
-  ManyToOne,
-  PrimaryColumn
-} from "typeorm"
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from "typeorm"
 import { ResourceEntity } from "src/media/resource.entity"
 
 export enum ArticleType {
@@ -20,7 +14,7 @@ export class ArticleEntity {
   @PrimaryGeneratedColumn()
   id: number
 
-  @PrimaryColumn("enum", {
+  @Column("enum", {
     enum: ArticleType,
     default: ArticleType.News
   })

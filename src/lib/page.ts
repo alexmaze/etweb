@@ -14,11 +14,12 @@ export interface IPageRes<T> extends IPageReq {
 export class Pager<T> {
   constructor(private params: IPageReq, private repo: Repository<T>) {}
 
-  async getPage(): Promise<IPageRes<T>> {
+  async getPage(where?: any): Promise<IPageRes<T>> {
     const skip = (this.params.page - 1) * this.params.size
 
     const [data, total] = await this.repo
       .createQueryBuilder("r")
+      .where(where)
       .skip(skip)
       .limit(this.params.size)
       .getManyAndCount()
