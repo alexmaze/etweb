@@ -60,8 +60,9 @@ export class ResourceService {
   async remove(id: number) {
     try {
       const item = await this.show(id, true)
-      await this.mediaService.deleteFile(item.key)
+      const key = item.key
       await this.resourceRepo.remove(item)
+      await this.mediaService.deleteFile(key)
     } catch (err) {
       throw err
     }
