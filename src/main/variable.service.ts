@@ -1,10 +1,14 @@
-import { Injectable, NotFoundException } from "@nestjs/common"
+import { Injectable, NotFoundException, Inject } from "@nestjs/common"
 import { InjectRepository } from "@nestjs/typeorm"
 import { Repository } from "typeorm"
 import { VariableEntity, VariableKeys, LanguageType } from "./variable.entity"
+import { MediaService } from "src/media/media.service"
 
 @Injectable()
 export class VariableService {
+  @Inject()
+  mediaService: MediaService
+
   constructor(
     @InjectRepository(VariableEntity)
     private readonly variableRepo: Repository<VariableEntity>
@@ -33,7 +37,16 @@ export class VariableService {
   }
 
   async all() {
-    const items = await this.variableRepo.find()
+    const items = await this.variableRepo.find({
+      relations: ["resource"]
+    })
+
+    for (const item of items) {
+      if (item.resource) {
+        item.resource.withUrl(this.mediaService)
+      }
+    }
+
     return items
   }
 

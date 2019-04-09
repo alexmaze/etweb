@@ -1,7 +1,14 @@
 /**
  * 系统变量
  */
-import { Entity, Column, PrimaryGeneratedColumn, PrimaryColumn } from "typeorm"
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  PrimaryColumn,
+  ManyToOne
+} from "typeorm"
+import { ResourceEntity } from "src/media/resource.entity"
 
 export enum VariableKeys {
   Name = "name", // 公司、组织名称
@@ -36,4 +43,7 @@ export class VariableEntity {
 
   @Column("text")
   value: string
+
+  @ManyToOne(type => ResourceEntity)
+  resource: ResourceEntity
 }
