@@ -34,14 +34,13 @@ export class ResourceEntity {
   }
 
   withUrl(mediaService: MediaService) {
-    // TODO 压缩
-    // + "?imageView2/0/q/75|imageslim"
     this.rawUrl = mediaService.getPublicUrl(
-      this.key 
+      this.key,
+      "style/raw"
     )
-    // "?imageView2/2/w/200/h/200/format/jpg/q/75|imageslim"
     this.thumbUrl = mediaService.getPublicUrl(
-      this.key
+      this.key,
+      "style/thumb"
     )
   }
 }
