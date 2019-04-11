@@ -2,7 +2,7 @@ import { Injectable, NotFoundException, Inject } from "@nestjs/common"
 import { InjectRepository } from "@nestjs/typeorm"
 import { Repository } from "typeorm"
 import { VariableEntity, VariableKeys, LanguageType } from "./variable.entity"
-import { MediaService } from "src/media/media.service"
+import { MediaService } from "../media/media.service"
 
 @Injectable()
 export class VariableService {
@@ -48,6 +48,16 @@ export class VariableService {
     }
 
     return items
+  }
+
+  async allAsMap() {
+    const items = await this.all()
+    const ret = Object.create(null)
+    items.forEach(item => {
+      ret[item.key] = item
+    })
+
+    return ret
   }
 
   async show(key: string, lang: LanguageType) {

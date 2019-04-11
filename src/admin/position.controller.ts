@@ -10,9 +10,9 @@ import {
   Post,
   Query
 } from "@nestjs/common"
-import { PositionService } from "src/main/position.service"
-import { PositionEntity } from "src/main/position.entity"
-import { IPageReq } from "src/lib/page"
+import { PositionService } from "../main/position.service"
+import { PositionEntity } from "../main/position.entity"
+import { IPageReq } from "../lib/page"
 
 @Controller("/api/admin/position")
 export class PositionController {

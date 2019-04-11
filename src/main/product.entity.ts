@@ -2,7 +2,7 @@
  * 产品
  */
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from "typeorm"
-import { ResourceEntity } from "src/media/resource.entity"
+import { ResourceEntity } from "../media/resource.entity"
 
 @Entity("product")
 export class ProductEntity {

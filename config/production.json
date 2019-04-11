@@ -6,9 +6,8 @@
     "host": "localhost",
     "port": 3306,
     "username": "root",
-    "password": "pwd",
-    "database": "etweb-prod",
-    "entities": ["{src,dist}/**/*.entity{.js,.ts}"],
+    "password": "123",
+    "database": "etweb-dev",
     "synchronize": true
   },
   "oss": {
@@ -19,6 +18,6 @@
   },
   "jwt": {
     "expiresIn": "2h",
-    "secret": ""
+    "secret": "123"
   }
 }

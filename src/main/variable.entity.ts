@@ -8,7 +8,7 @@ import {
   PrimaryColumn,
   ManyToOne
 } from "typeorm"
-import { ResourceEntity } from "src/media/resource.entity"
+import { ResourceEntity } from "../media/resource.entity"
 
 export enum VariableKeys {
   Name = "name", // 公司、组织名称

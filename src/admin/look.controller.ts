@@ -10,9 +10,9 @@ import {
   Post,
   Query
 } from "@nestjs/common"
-import { LookService } from "src/main/look.service"
-import { LookEntity } from "src/main/look.entity"
-import { IPageReq } from "src/lib/page"
+import { LookService } from "../main/look.service"
+import { LookEntity } from "../main/look.entity"
+import { IPageReq } from "../lib/page"
 
 @Controller("/api/admin/look")
 export class LookController {

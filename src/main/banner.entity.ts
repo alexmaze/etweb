@@ -2,7 +2,7 @@
  * 主页轮播图
  */
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from "typeorm"
-import { ResourceEntity } from "src/media/resource.entity"
+import { ResourceEntity } from "../media/resource.entity"
 
 @Entity("banner")
 export class BannerEntity {

@@ -2,7 +2,7 @@
  * 文章：新闻咨询、经验分享
  */
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from "typeorm"
-import { ResourceEntity } from "src/media/resource.entity"
+import { ResourceEntity } from "../media/resource.entity"
 
 export enum ArticleType {
   News = "news",

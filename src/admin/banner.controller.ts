@@ -9,8 +9,8 @@ import {
   ParseIntPipe,
   Post
 } from "@nestjs/common"
-import { BannerService } from "src/main/banner.service"
-import { BannerEntity } from "src/main/banner.entity"
+import { BannerService } from "../main/banner.service"
+import { BannerEntity } from "../main/banner.entity"
 
 @Controller("/api/admin/banner")
 export class BannerController {

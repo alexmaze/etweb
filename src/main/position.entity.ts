@@ -2,7 +2,7 @@
  * 加入我们：职位
  */
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from "typeorm"
-import { ResourceEntity } from "src/media/resource.entity"
+import { ResourceEntity } from "../media/resource.entity"
 
 @Entity("position")
 export class PositionEntity {

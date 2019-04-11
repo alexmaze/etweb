@@ -1,9 +1,9 @@
 import { Injectable, Inject, NotFoundException } from "@nestjs/common"
 import { InjectRepository } from "@nestjs/typeorm"
 import { Repository } from "typeorm"
-import { MediaService } from "src/media/media.service"
+import { MediaService } from "../media/media.service"
 import { ArticleEntity, ArticleType } from "./article.entity"
-import { IPageReq, Pager } from "src/lib/page"
+import { IPageReq, Pager } from "../lib/page"
 
 @Injectable()
 export class ArticleService {

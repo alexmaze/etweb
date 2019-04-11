@@ -14,9 +14,9 @@ import {
   Logger,
   ParseIntPipe
 } from "@nestjs/common"
-import { ResourceService } from "src/media/resource.service"
-import { IPageReq } from "src/lib/page"
-import { ResourceEntity } from "src/media/resource.entity"
+import { ResourceService } from "../media/resource.service"
+import { IPageReq } from "../lib/page"
+import { ResourceEntity } from "../media/resource.entity"
 
 @Controller("/api/admin/resource")
 export class ResourceController {

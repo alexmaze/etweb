@@ -1,7 +1,7 @@
 import { Injectable, Global } from "@nestjs/common"
-import { ConfigService } from "src/config/config.service"
+import { ConfigService } from "../config/config.service"
 import * as qiniu from "qiniu"
-import { IOssOptions } from "src/config/config.interface"
+import { IOssOptions } from "../config/config.interface"
 import { Duplex } from "stream"
 import uuid = require("uuid")
 

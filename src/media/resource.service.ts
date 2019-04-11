@@ -8,7 +8,7 @@ import {
 import { InjectRepository } from "@nestjs/typeorm"
 import { ResourceEntity } from "./resource.entity"
 import { Repository } from "typeorm"
-import { IPageReq, Pager } from "src/lib/page"
+import { IPageReq, Pager } from "../lib/page"
 import { MediaService } from "./media.service"
 
 @Injectable()

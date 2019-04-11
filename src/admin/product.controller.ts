@@ -10,9 +10,9 @@ import {
   Post,
   Query
 } from "@nestjs/common"
-import { ProductService } from "src/main/product.service"
-import { ProductEntity } from "src/main/product.entity"
-import { IPageReq } from "src/lib/page"
+import { ProductService } from "../main/product.service"
+import { ProductEntity } from "../main/product.entity"
+import { IPageReq } from "../lib/page"
 
 @Controller("/api/admin/product")
 export class ProductController {

@@ -1,7 +1,10 @@
 import { Module } from "@nestjs/common"
-import { WwwController } from "./www.controller"
+import { MediaModule } from "../media/media.module"
+import { MainModule } from "../main/main.module"
+import { IndexController } from "./index.controller"
 
 @Module({
-  controllers: [WwwController]
+  imports: [MainModule, MediaModule],
+  controllers: [IndexController]
 })
 export class WwwModule {}

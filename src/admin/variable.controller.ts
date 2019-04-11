@@ -1,6 +1,6 @@
 import { Controller, Get, Body, Inject, Param, Patch } from "@nestjs/common"
-import { VariableService } from "src/main/variable.service"
-import { VariableEntity } from "src/main/variable.entity"
+import { VariableService } from "../main/variable.service"
+import { VariableEntity } from "../main/variable.entity"
 
 @Controller("/api/admin/variable")
 export class VariableController {

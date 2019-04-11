@@ -5,3 +5,5 @@ development.json
 test.json
 .http/
 .sql/
+.pm2/
+nodemon-debug.json

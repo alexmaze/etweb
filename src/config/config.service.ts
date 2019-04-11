@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common"
+import { Injectable, Logger } from "@nestjs/common"
 import * as path from "path"
 import { NodeEnv, parseNodeEnv } from "./env"
 import { IConfig } from "./config.interface"
@@ -11,7 +11,10 @@ export class ConfigService implements TypeOrmOptionsFactory, JwtOptionsFactory {
   public readonly mode: NodeEnv
 
   createTypeOrmOptions() {
-    return this.config.database
+    return {
+      entities: [path.join(__dirname, "../**/*.entity.*")],
+      ...this.config.database
+    }
   }
 
   createJwtOptions() {
@@ -25,6 +28,7 @@ export class ConfigService implements TypeOrmOptionsFactory, JwtOptionsFactory {
 
   constructor() {
     this.mode = parseNodeEnv(process.env.NODE_ENV)
+    Logger.log(`MODE: ${this.mode}`)
     this.config = require(path.join(
       __dirname,
       `../../config/${this.mode}.json`

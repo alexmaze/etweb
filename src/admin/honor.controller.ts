@@ -10,9 +10,9 @@ import {
   Post,
   Query
 } from "@nestjs/common"
-import { HonorService } from "src/main/honor.service"
-import { HonorEntity } from "src/main/honor.entity"
-import { IPageReq } from "src/lib/page"
+import { HonorService } from "../main/honor.service"
+import { HonorEntity } from "../main/honor.entity"
+import { IPageReq } from "../lib/page"
 
 @Controller("/api/admin/honor")
 export class HonorController {

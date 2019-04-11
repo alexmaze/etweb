@@ -10,9 +10,9 @@ import {
   Post,
   Query
 } from "@nestjs/common"
-import { ArticleService } from "src/main/article.service"
-import { ArticleEntity, ArticleType } from "src/main/article.entity"
-import { IPageReq } from "src/lib/page"
+import { ArticleService } from "../main/article.service"
+import { ArticleEntity, ArticleType } from "../main/article.entity"
+import { IPageReq } from "../lib/page"
 
 @Controller("/api/admin/article")
 export class ArticleController {
