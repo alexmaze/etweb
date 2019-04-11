@@ -5,6 +5,7 @@
   "author": "yanhao1991@gmail.com",
   "license": "MIT",
   "scripts": {
+    "deploy": "pm2 deploy production ecosystem.config.js",
     "build": "tsc -p tsconfig.build.json",
     "format": "prettier --write \"src/**/*.ts\"",
     "start": "NODE_ENV=development ts-node -r tsconfig-paths/register src/main.ts",
