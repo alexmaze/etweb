@@ -27,7 +27,7 @@ module.exports = {
       repo: "git@github.com:yanhao1991/etweb.git",
       path: "/var/www/etweb",
       "post-deploy":
-        "npm run start:prod && pm2 reload ecosystem.config.js --env production"
+        "yarn && npm run start:prod && pm2 reload ecosystem.config.js --env production"
     }
   }
 }
