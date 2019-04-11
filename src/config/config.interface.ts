@@ -1,6 +1,7 @@
 import { TypeOrmModuleOptions } from "@nestjs/typeorm"
 
 export interface IOssOptions {
+  region: string
   bucket: string
   accessKey: string
   secretKey: string
