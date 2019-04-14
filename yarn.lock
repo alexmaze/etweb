@@ -87,6 +87,12 @@
   dependencies:
     "@types/node" "*"
 
+"@types/cookie-parser@^1.4.1":
+  version "1.4.1"
+  resolved "http://registry.npm.taobao.org/@types/cookie-parser/download/@types/cookie-parser-1.4.1.tgz#e88a39c41960f31549b4c52dd8620aa4a2feb4bb"
+  dependencies:
+    "@types/express" "*"
+
 "@types/cookiejar@*":
   version "2.1.1"
   resolved "http://registry.npm.taobao.org/@types/cookiejar/download/@types/cookiejar-2.1.1.tgz#90b68446364baf9efd8e8349bb36bd3852b75b80"
@@ -998,6 +1004,13 @@ convert-source-map@^1.4.0, convert-source-map@^1.5.1:
   resolved "http://registry.npm.taobao.org/convert-source-map/download/convert-source-map-1.6.0.tgz#51b537a8c43e0f04dec1993bffcdd504e758ac20"
   dependencies:
     safe-buffer "~5.1.1"
+
+cookie-parser@^1.4.4:
+  version "1.4.4"
+  resolved "http://registry.npm.taobao.org/cookie-parser/download/cookie-parser-1.4.4.tgz#e6363de4ea98c3def9697b93421c09f30cf5d188"
+  dependencies:
+    cookie "0.3.1"
+    cookie-signature "1.0.6"
 
 cookie-signature@1.0.6:
   version "1.0.6"

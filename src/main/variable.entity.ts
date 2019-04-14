@@ -12,6 +12,7 @@ import { ResourceEntity } from "../media/resource.entity"
 
 export enum VariableKeys {
   Name = "name", // 公司、组织名称
+  SubName = "sub_name", // 公司、组织子名称
   Description = "description", // 简介
   Address = "address", // 地址
   Contact = "contact", // 联系人

@@ -36,9 +36,14 @@ export class VariableService {
     }
   }
 
-  async all() {
+  async all(lang?: LanguageType) {
+    const where: any = {}
+    if (lang) {
+      where.language = lang
+    }
     const items = await this.variableRepo.find({
-      relations: ["resource"]
+      relations: ["resource"],
+      where
     })
 
     for (const item of items) {
@@ -50,8 +55,8 @@ export class VariableService {
     return items
   }
 
-  async allAsMap() {
-    const items = await this.all()
+  async allAsMap(lang: LanguageType) {
+    const items = await this.all(lang)
     const ret = Object.create(null)
     items.forEach(item => {
       ret[item.key] = item
