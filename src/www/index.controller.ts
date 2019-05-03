@@ -28,8 +28,11 @@ export class IndexController {
   @Get()
   @Render("index")
   async root(@Headers(ETWEB_LANGUAGE) lang: LanguageType) {
+    const variables = await this.variableServ.allAsMap(lang)
     const ret = {
-      variables: await this.variableServ.allAsMap(lang),
+      lang,
+      title: variables[VariableKeys.Name].value,
+      variables,
       banners: await this.bannerServ.all(),
       products: await this.productServ.list({ page: 1, size: 16 }),
       news: await this.articleServ.list({ page: 1, size: 16 }, ArticleType.News)

@@ -4,6 +4,8 @@ import { ConfigService } from "./config/config.service"
 import { Logger } from "@nestjs/common"
 import { join } from "path"
 
+import * as hbs from "hbs"
+
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
   const { config, mode } = app.get(ConfigService)
@@ -11,6 +13,7 @@ async function bootstrap() {
   app.useStaticAssets(join(__dirname, "..", "public"))
   app.setBaseViewsDir(join(__dirname, "..", "views"))
   app.setViewEngine("hbs")
+  hbs.registerPartials(join(__dirname, "..", "views/partials"))
 
   await app.listen(config.port)
 

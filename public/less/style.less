@@ -1,0 +1,136 @@
+@color-text: #222222;
+@color-text-sub: #999999;
+@color-active: #39a9ff;
+
+body {
+  margin: 0;
+  color: @color-text;
+  font-size: 14px;
+}
+
+a {
+  transition: all 0.2s;
+  &:hover {
+    color: @color-active;
+  }
+}
+
+.et-header {
+  width: 1200px;
+  margin: auto;
+  display: flex;
+
+  height: 80px;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 16px;
+
+  a {
+    cursor: pointer;
+  }
+
+  .logo {
+    width: 370px;
+    display: flex;
+    img {
+      width: 60px;
+      height: 51px;
+      margin-right: 20px;
+    }
+    .names {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      .name {
+        font-weight: bold;
+        font-size: 16px;
+      }
+      .sub_name {
+        color: @color-text-sub;
+        font-size: 12px;
+      }
+    }
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    .menu {
+      display: flex;
+      .menu-item {
+        margin-right: 36px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s;
+        &.selected {
+          color: @color-active;
+        }
+      }
+    }
+
+    .language {
+      font-size: 12px;
+      font-weight: 500;
+      .cn,
+      .en {
+        &.selected {
+          color: @color-active;
+        }
+      }
+    }
+  }
+}
+
+.et-footer {
+  background: #000000;
+  a {
+    cursor: pointer;
+  }
+
+  .main {
+    width: 1200px;
+    margin: auto;
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    padding: 54px 0;
+  }
+
+  .menu {
+    display: flex;
+    line-height: 2.5;
+    .menu-item {
+      margin-right: 80px;
+      .title {
+        font-weight: 500;
+        transition: all 0.2s;
+        display: block;
+        &.selected {
+          color: @color-active;
+        }
+      }
+      position: relative;
+      .sub-items {
+        position: absolute;
+        left: 0;
+        top: 40px;
+        font-size: 12px;
+        white-space: nowrap;
+        color: @color-text-sub;
+        .sub-item {
+          display: block;
+        }
+      }
+    }
+  }
+
+  .qrcode {
+    margin: 0;
+    color: @color-text-sub;
+    font-size: 12px;
+    figcaption {
+      margin-top: 10px;
+      text-align: center;
+    }
+  }
+}
