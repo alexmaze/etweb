@@ -17,12 +17,13 @@ export class Pager<T> {
   async getPage(where?: any): Promise<IPageRes<T>> {
     const skip = (this.params.page - 1) * this.params.size
 
-    const [data, total] = await this.repo
+    const query = this.repo
       .createQueryBuilder("r")
       .where(where)
       .skip(skip)
       .limit(this.params.size)
-      .getManyAndCount()
+
+    const [data, total] = await query.getManyAndCount()
 
     return {
       ...this.params,

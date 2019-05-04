@@ -90,3 +90,122 @@
     }
   }
 }
+
+.products {
+  padding: 60px 0;
+  width: 1200px;
+  margin: auto;
+  color: #333333;
+  text-align: center;
+  .title {
+    font-size: 32px;
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+  .sub-title {
+    font-size: 16px;
+    &:after {
+      content: "\20";
+      display: block;
+      width: 38px;
+      height: 4px;
+      background: linear-gradient(-90deg, #4fccff, #2181fe);
+      margin: auto;
+      margin-top: 24px;
+    }
+  }
+
+  .products-showcase {
+    position: relative;
+    margin-right: -60px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    .slick-arrow {
+      position: absolute;
+      top: 96px;
+      width: 24px;
+      height: 60px;
+      color: #b2b2b2;
+      background: currentColor;
+      overflow: hidden;
+      outline: none;
+      border: none;
+      &:after {
+        content: "\20";
+        display: block;
+        width: 11px;
+        height: 20px;
+        background: currentColor;
+        z-index: 10;
+        top: 20px;
+        position: absolute;
+        right: -3px;
+      }
+      &:before {
+        content: "\20";
+        z-index: 9;
+        display: block;
+        width: 11px;
+        height: 11px;
+        border: 1px solid #fff;
+        position: absolute;
+        left: 10px;
+        top: 24px;
+        transform: rotate(45deg);
+      }
+    }
+    .slick-prev {
+      left: 0;
+      z-index: 10;
+    }
+    .slick-next {
+      right: 55px;
+      &:after {
+        left: -2px;
+      }
+      &:before {
+        left: auto;
+        right: 9px;
+      }
+    }
+    .product-item {
+      display: block;
+
+      .product-title {
+        width: 260px;
+        margin-top: 20px;
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      .product-img {
+        width: 260px;
+        height: 260px;
+        background-color: #ffffff;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+
+      &.slick-active .product-img {
+        box-shadow: 0 2px 34px 0 #0000000e;
+      }
+    }
+  }
+
+  .products-more {
+    display: block;
+    margin: auto;
+    height: 40px;
+    width: 154px;
+    line-height: 40px;
+    text-align: center;
+    color: #000000;
+    border: 2px solid;
+    font-size: 14px;
+    cursor: pointer;
+    &:hover {
+      color: #39a9ff;
+    }
+  }
+}

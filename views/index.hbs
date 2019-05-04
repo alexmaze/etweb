@@ -50,6 +50,22 @@
     </div>
   </div>
 
+  <div class="products">
+    <div class="title">{{products.title}}</div>
+    <div class="sub-title">{{products.subTitle}}</div>
+    <div class="products-showcase">
+      {{#each products.items}}
+      <div class="product-item">
+        <div class="product-img" style="background-image: url({{cover.rawUrl}})"></div>
+        <div class="product-title">{{title}}</div>
+      </div>
+      {{/each}}
+    </div>
+    <a class="products-more">
+      {{products._more}}
+    </a>
+  </div>
+
 
   {{> footer}}
 
@@ -62,6 +78,13 @@
       fade: true,
       cssEase: 'linear',
       arrows: false
+    });
+    $('.products-showcase').slick({
+      dots: false,
+      infinite: false,
+      slidesToShow: 4,
+      slidesToScroll: 4,
+      cssEase: 'linear',
     });
   </script>
 </body>

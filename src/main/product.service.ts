@@ -4,6 +4,7 @@ import { Repository } from "typeorm"
 import { MediaService } from "../media/media.service"
 import { IPageReq, Pager } from "../lib/page"
 import { ProductEntity } from "./product.entity"
+import { LanguageType } from "./variable.entity"
 
 @Injectable()
 export class ProductService {
@@ -15,13 +16,21 @@ export class ProductService {
     private readonly repo: Repository<ProductEntity>
   ) {}
 
-  async list(params: IPageReq) {
+  async list(params: IPageReq, lang?: LanguageType) {
     const res = await new Pager(params, this.repo).getPage()
 
     if (res && res.data) {
       for (const item of res.data) {
+        const { cover } = await this.show(item.id)
+        item.cover = cover
+
         if (item.cover != null) {
           item.cover.withUrl(this.mediaService)
+        }
+        if (lang === LanguageType.English) {
+          item.title = item.titleEn
+          item.subTitle = item.subTitleEn
+          item.content = item.contentEn
         }
       }
     }

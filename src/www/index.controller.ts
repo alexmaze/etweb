@@ -35,8 +35,11 @@ export class IndexController {
   @Render("index")
   async root(@Headers(ETWEB_LANGUAGE) lang: LanguageType) {
     const common = await this.commonServ.getCommonData(lang, WebPosition.Index)
+    const products = await this.productServ.list({ page: 1, size: 16 }, lang)
+
     const ret = {
       ...common,
+      banners: await this.bannerServ.all(lang),
       intro: {
         title: common.variables.index_2_title.value,
         subTitle: common.variables.index_2_sub_title.value,
@@ -54,12 +57,17 @@ export class IndexController {
             ? "Advanced Company"
             : "先进单位 认证证书"
       },
-      banners: await this.bannerServ.all(lang),
-      products: await this.productServ.list({ page: 1, size: 16 }),
-      news: await this.articleServ.list({ page: 1, size: 16 }, ArticleType.News)
+      products: {
+        title: lang === LanguageType.English ? "Products" : "产品中心",
+        subTitle:
+          lang === LanguageType.English
+            ? "Research / Produce / Sales"
+            : "集生产、研发、销售于一体",
+        _more: lang === LanguageType.English ? "More" : "了解更多",
+        items: (products && products.data) || []
+      }
+      // news: await this.articleServ.list({ page: 1, size: 16 }, ArticleType.News)
     }
-
-    console.log(JSON.stringify(ret, null, 2))
 
     return ret
   }
