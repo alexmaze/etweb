@@ -67,6 +67,18 @@
   </div>
 
   <div class="looks">
+    <div class="title">{{looks.title}}</div>
+    <div class="looks-content">
+
+      <div class="looks-showcase">
+        {{#each looks.items}}
+        <div class="look-item" data-url="{{resource.rawUrl}}">
+          <div class="look-img" style="background-image: url({{resource.rawUrl}})"></div>
+          <div class="look-title">{{title}}</div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
 
   </div>
 
@@ -79,6 +91,8 @@
       dots: true,
       infinite: true,
       speed: 500,
+      autoplay: true,
+      autoplaySpeed: 3000,
       fade: true,
       cssEase: 'linear',
       arrows: false
@@ -90,6 +104,35 @@
       slidesToScroll: 4,
       cssEase: 'linear',
     });
+    $('.looks-showcase').slick({
+      dots: false,
+      infinite: true,
+      slidesToShow: 7,
+      slidesToScroll: 1,
+      centerMode: true,
+      centerPadding: '20px',
+      autoplay: true,
+      autoplaySpeed: 3000,
+      cssEase: 'linear',
+    });
+
+    setInterval(function () {
+      var item = $(".looks-showcase .slick-current")[0]
+      if (!item || !item.dataset || !item.dataset.url) {
+        return
+      }
+
+      var url = item.dataset.url
+
+      if (window.__look_current_url === url) {
+        return
+      }
+
+      window.__look_current = url
+      // 触发更新
+      $(".looks-content")[0].style.backgroundImage = `url(${url})`
+
+    }, 100)
   </script>
 </body>
 

@@ -86,6 +86,8 @@ export class IndexController {
       }
     }
 
+    console.log(JSON.stringify(looks.data, null, 2))
+
     return ret
   }
 }

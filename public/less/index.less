@@ -170,6 +170,7 @@
     }
     .product-item {
       display: block;
+      outline: none;
 
       .product-title {
         width: 260px;
@@ -206,6 +207,132 @@
     cursor: pointer;
     &:hover {
       color: #39a9ff;
+    }
+  }
+}
+
+.looks {
+  background-image: url(/images/looks-background.png);
+  background-position: 50% 50%;
+  background-size: cover;
+  padding: 66px 0 33px 0;
+  margin: auto;
+  color: #333333;
+  text-align: center;
+  height: 806px;
+  box-sizing: border-box;
+  .title {
+    font-size: 32px;
+    font-weight: 500;
+    &:after {
+      content: "\20";
+      display: block;
+      width: 38px;
+      height: 4px;
+      background: linear-gradient(-90deg, #4fccff, #2181fe);
+      margin: auto;
+      margin-bottom: 40px;
+      margin-top: 22px;
+    }
+  }
+  .looks-content {
+    width: 1200px;
+    height: 600px;
+    margin: auto;
+    background: #00000017;
+    padding: 25px 20px 0;
+    position: relative;
+    box-sizing: border-box;
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+
+  .looks-showcase {
+    position: absolute;
+    bottom: 0;
+    left: 60px;
+    margin-bottom: 25px;
+    width: 1084px;
+    .slick-arrow {
+      position: absolute;
+      top: 20px;
+      width: 20px;
+      height: 40px;
+      color: #000000;
+      background: currentColor;
+      overflow: hidden;
+      outline: none;
+      border: none;
+      &:after {
+        content: "\20";
+        display: block;
+        width: 11px;
+        height: 20px;
+        background: currentColor;
+        z-index: 10;
+        top: 10px;
+        position: absolute;
+        right: -3px;
+      }
+      &:before {
+        content: "\20";
+        z-index: 9;
+        display: block;
+        width: 11px;
+        height: 11px;
+        border: 1px solid #fff;
+        position: absolute;
+        left: 8px;
+        top: 15px;
+        transform: rotate(45deg);
+      }
+    }
+    .slick-prev {
+      left: -40px;
+      z-index: 10;
+    }
+    .slick-next {
+      right: -37px;
+      &:after {
+        left: -3px;
+      }
+      &:before {
+        left: auto;
+        right: 8px;
+      }
+    }
+    .look-item {
+      display: block;
+      outline: none;
+
+      &.slick-current {
+        .look-title {
+          color: #39a9ff;
+        }
+        .look-img {
+          box-shadow: 0 0 0 2px #39a9ff inset;
+        }
+      }
+
+      .look-title {
+        width: 144px;
+        margin-top: 10px;
+        font-size: 14px;
+        color: #fff;
+      }
+
+      .look-img {
+        width: 144px;
+        height: 80px;
+        background-color: #ffffff;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+
+      &.slick-active .product-img {
+        box-shadow: 0 2px 34px 0 #0000000e;
+      }
     }
   }
 }
