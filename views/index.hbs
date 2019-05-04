@@ -7,7 +7,7 @@
 
   <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
   <link rel="stylesheet" type="text/css" href="/css/slick-theme.css" />
-
+  <link rel="stylesheet" type="text/css" href="/css/index.css" />
 
 </head>
 
@@ -24,6 +24,30 @@
       </div>
     </div>
     {{/each}}
+  </div>
+
+  <div class="intro">
+    <img src="{{intro.imageUrl}}" alt="" class="intro-photo">
+    <div class="intro-text">
+      <div class="intro-title">{{intro.title}}</div>
+      <div class="intro-sub-title">{{intro.subTitle}}</div>
+      <div class="intro-content">
+        {{{intro.text}}}
+        <a class="intro-content-more">
+          {{intro._more}}
+        </a>
+      </div>
+      <div class="intro-link">
+        <a class="intro-link-item">
+          <div class="intro-link-title">{{intro._link_1}}</div>
+          <div class="intro-link-sub-title">{{intro._link_1_sub}}</div>
+        </a>
+        <a class="intro-link-item">
+          <div class="intro-link-title">{{intro._link_2}}</div>
+          <div class="intro-link-sub-title">{{intro._link_2_sub}}</div>
+        </a>
+      </div>
+    </div>
   </div>
 
 
