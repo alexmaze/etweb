@@ -2,57 +2,23 @@
   <div class="main">
 
     <div class="menu">
-      <div class="menu-item index">
-        <a class="title">首页</a>
+      {{#each footer.menu}}
+
+      <div class="menu-item {{key}}">
+        <a class="title">{{text}}</a>
         <div class="sub-items">
+          {{#each items}}
+          <a class="sub-item">{{text}}</a>
+          {{/each}}
         </div>
       </div>
-      <div class="menu-item about">
-        <a class="title">关于我们</a>
-        <div class="sub-items">
-          <a class="sub-item">公司简介</a>
-          <a class="sub-item">荣誉资质</a>
-        </div>
-      </div>
-      <div class="menu-item product">
-        <a class="title">产品中心</a>
-        <div class="sub-items">
-          <a class="sub-item">氯化石蜡-52</a>
-          <a class="sub-item">邻苯二甲酸二异丁酯</a>
-          <a class="sub-item">环氧大豆油</a>
-          <a class="sub-item">对苯二甲酸二辛酯</a>
-        </div>
-      </div>
-      <div class="menu-item look">
-        <a class="title">制造实力</a>
-        <div class="sub-items">
-          <a class="sub-item">厂房容貌</a>
-          <a class="sub-item">控制中心</a>
-          <a class="sub-item">物流运输</a>
-        </div>
-      </div>
-      <div class="menu-item news">
-        <a class="title">新闻资讯</a>
-        <div class="sub-items">
-        </div>
-      </div>
-      <div class="menu-item jobs">
-        <a class="title">加入我们</a>
-        <div class="sub-items">
-        </div>
-      </div>
-      <div class="menu-item contact">
-        <a class="title">联系我们</a>
-        <div class="sub-items">
-          <a class="sub-item">24小时咨询热线：0511-86612753</a>
-          <a class="sub-item">地址：丹阳市皇塘镇蒋墅河滨南路60号</a>
-        </div>
-      </div>
+
+      {{/each}}
     </div>
 
     <figure class="qrcode">
       <img src="https://via.placeholder.com/120?text=QRCODE" alt="">
-      <figcaption>欢迎关注微信公众号</figcaption>
+      <figcaption>{{footer.wechat}}</figcaption>
     </figure>
   </div>
 

@@ -22,9 +22,7 @@
   </div>
 </header>
 <script>
-  (() => {
-    $(".et-header .language .cn").on("click", setLang.bind(null, "cn"))
-    $(".et-header .language .en").on("click", setLang.bind(null, "en"))
-    $(`.et-header .language .${getLang()}`).addClass("selected")
-  })()
+  $(".et-header .language .cn").on("click", setLang.bind(null, "cn"))
+  $(".et-header .language .en").on("click", setLang.bind(null, "en"))
+  $(`.et-header .language .${getLang()}`).addClass("selected")
 </script>
