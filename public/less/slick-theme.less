@@ -1,0 +1,47 @@
+.slick-slider {
+  position: relative;
+
+  .slick-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slick-dots {
+    position: absolute;
+    bottom: 0px;
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-align: center;
+    li {
+      position: relative;
+      display: inline-block;
+      margin: 0;
+      padding: 10px 5px;
+
+      cursor: pointer;
+
+      button {
+        width: 20px;
+        height: 4px;
+        overflow: hidden;
+        border: none;
+        opacity: 0.3;
+
+        &:hover,
+        &:focus {
+          outline: none;
+        }
+      }
+
+      &.slick-active {
+        button {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

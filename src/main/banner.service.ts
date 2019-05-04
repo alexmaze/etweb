@@ -10,6 +10,7 @@ import { BannerEntity } from "./banner.entity"
 import { Repository } from "typeorm"
 import { IPageReq, Pager } from "../lib/page"
 import { MediaService } from "../media/media.service"
+import { LanguageType } from "./variable.entity"
 
 @Injectable()
 export class BannerService {
@@ -21,7 +22,7 @@ export class BannerService {
     private readonly repo: Repository<BannerEntity>
   ) {}
 
-  async all() {
+  async all(lang?: LanguageType) {
     const items = await this.repo.find({
       relations: ["resource"],
       order: {
@@ -30,7 +31,13 @@ export class BannerService {
     })
 
     if (items != null) {
-      items.forEach(item => item.resource.withUrl(this.mediaService))
+      items.forEach(item => {
+        if (lang === LanguageType.English) {
+          item.title = item.titleEn
+          item.subTitleEn = item.subTitleEn
+        }
+        return item.resource.withUrl(this.mediaService)
+      })
     }
 
     return items

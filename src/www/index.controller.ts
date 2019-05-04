@@ -41,6 +41,8 @@ export class IndexController {
       news: await this.articleServ.list({ page: 1, size: 16 }, ArticleType.News)
     }
 
+    console.log(JSON.stringify(ret, null, 2))
+
     return ret
   }
 }

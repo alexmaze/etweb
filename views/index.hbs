@@ -4,11 +4,42 @@
 <head>
   {{> base}}
   <title>{{title}}</title>
+
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+  <link rel="stylesheet" type="text/css" href="/css/slick-theme.css" />
+
+
 </head>
 
 <body>
   {{> header}}
+
+  <div class="banner">
+    {{#each banners}}
+    <div class="banner-item">
+      <img class="banner-img" src="{{resource.rawUrl}}" alt="">
+      <div class="banner-text">
+        <div class="title">{{title}}</div>
+        <div class="subTitle">{{subTitle}}</div>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+
+
   {{> footer}}
+
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script>
+    $('.banner').slick({
+      dots: true,
+      infinite: true,
+      speed: 500,
+      fade: true,
+      cssEase: 'linear',
+      arrows: false
+    });
+  </script>
 </body>
 
 </html>
