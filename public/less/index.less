@@ -97,6 +97,7 @@
   margin: auto;
   color: #333333;
   text-align: center;
+  overflow: hidden;
   .title {
     font-size: 32px;
     font-weight: 500;
@@ -159,7 +160,7 @@
       z-index: 10;
     }
     .slick-next {
-      right: 55px;
+      right: 60px;
       &:after {
         left: -2px;
       }
@@ -332,6 +333,79 @@
 
       &.slick-active .product-img {
         box-shadow: 0 2px 34px 0 #0000000e;
+      }
+    }
+  }
+}
+
+.pnews {
+  padding: 58px 0;
+  width: 1200px;
+  margin: auto;
+  color: #333333;
+  text-align: center;
+  .title {
+    font-size: 32px;
+    font-weight: 500;
+    &:after {
+      content: "\20";
+      display: block;
+      width: 38px;
+      height: 4px;
+      background: linear-gradient(-90deg, #4fccff, #2181fe);
+      margin: auto;
+      margin-top: 20px;
+      margin-bottom: 30px;
+    }
+  }
+
+  .news-more {
+    display: block;
+    margin: auto;
+    height: 40px;
+    width: 154px;
+    line-height: 40px;
+    text-align: center;
+    color: #000000;
+    border: 2px solid;
+    font-size: 14px;
+    cursor: pointer;
+    &:hover {
+      color: #39a9ff;
+    }
+  }
+
+  .news-content {
+    padding: 15px 0 15px 12px;
+    margin-bottom: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    color: #ffffff;
+    background: #ffffff;
+    text-align: left;
+    .news-item {
+      width: 368px;
+      height: 150px;
+      flex-shrink: 0;
+      flex-grow: 0;
+      background: #dddddd;
+      margin: 12px;
+      background-position: 50% 50%;
+      background-size: cover;
+      padding: 18px;
+      box-sizing: border-box;
+      .news-title {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 5px;
+        margin-top: 75px;
+      }
+      .news-text {
+        white-space: nowrap;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 12px;
       }
     }
   }

@@ -69,7 +69,6 @@
   <div class="looks">
     <div class="title">{{looks.title}}</div>
     <div class="looks-content">
-
       <div class="looks-showcase">
         {{#each looks.items}}
         <div class="look-item" data-url="{{resource.rawUrl}}">
@@ -79,9 +78,22 @@
         {{/each}}
       </div>
     </div>
-
   </div>
 
+  <div class="pnews">
+    <div class="title">{{news.title}}</div>
+    <div class="news-content">
+      {{#each news.items}}
+      <div class="news-item" style="background-image: url({{cover.rawUrl}})">
+        <div class="news-title">{{title}}</div>
+        <div class="news-text">{{content}}</div>
+      </div>
+      {{/each}}
+    </div>
+    <a class="news-more">
+      {{news._more}}
+    </a>
+  </div>
 
   {{> footer}}
 

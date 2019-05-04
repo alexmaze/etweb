@@ -11,7 +11,7 @@
 
     <div class="menu">
       {{#each header.menu}}
-      <a class="menu-item {{key}} {{#if selected}}selected{{/if}}">{{text}}</a>
+      <a href="{{path}}" class="menu-item {{key}} {{#if selected}}selected{{/if}}">{{text}}</a>
       {{/each}}
     </div>
     <div class="language">

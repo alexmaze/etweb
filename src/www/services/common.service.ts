@@ -123,6 +123,7 @@ export function getHeaderData(lang: LanguageType, position: WebPosition) {
 
   return {
     menu: positions.map(p => ({
+      path: `/${p === "index" ? "" : p}`,
       key: p,
       text: menuTextMap[p][lang],
       selected: p === position

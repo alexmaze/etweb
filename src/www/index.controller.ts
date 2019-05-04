@@ -1,21 +1,11 @@
 import { Controller, Get, Render, Inject, Headers } from "@nestjs/common"
-import { VariableService } from "../main/variable.service"
-import {
-  VariableKeys,
-  VariableEntity,
-  LanguageType
-} from "../main/variable.entity"
+import { LanguageType } from "../main/variable.entity"
 import { BannerService } from "../main/banner.service"
 import { ProductService } from "src/main/product.service"
 import { ArticleService } from "src/main/article.service"
 import { ArticleType } from "src/main/article.entity"
 import { ETWEB_LANGUAGE } from "./language.middleware"
-import {
-  getFooterData,
-  getHeaderData,
-  WebPosition,
-  CommonService
-} from "./services/common.service"
+import { WebPosition, CommonService } from "./services/common.service"
 import { LookService } from "src/main/look.service"
 
 @Controller("/")
@@ -39,13 +29,20 @@ export class IndexController {
   @Render("index")
   async root(@Headers(ETWEB_LANGUAGE) lang: LanguageType) {
     const common = await this.commonServ.getCommonData(lang, WebPosition.Index)
-    const products = await this.productServ.list({ page: 1, size: 16 }, lang)
+    const products = await this.productServ.list({ page: 1, size: 6 }, lang)
     const news = await this.articleServ.list(
       { page: 1, size: 16 },
       ArticleType.News,
       lang
     )
     const looks = await this.lookServ.list({ page: 1, size: 16 }, lang)
+
+    const newsItems = (news && news.data && news.data) || []
+    newsItems.forEach(item => {
+      if (item.content) {
+        item.content = item.content.replace(/<[^>]+>|&[^>]+;/g, "").trim()
+      }
+    })
 
     const ret = {
       ...common,
@@ -82,11 +79,10 @@ export class IndexController {
       },
       news: {
         title: lang === LanguageType.English ? "News" : "新闻资讯",
-        items: (news && news.data) || []
+        items: newsItems,
+        _more: lang === LanguageType.English ? "More" : "了解更多"
       }
     }
-
-    console.log(JSON.stringify(looks.data, null, 2))
 
     return ret
   }
