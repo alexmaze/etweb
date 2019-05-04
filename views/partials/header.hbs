@@ -10,13 +10,9 @@
   <div class="actions">
 
     <div class="menu">
-      <a class="menu-item index">首页</a>
-      <a class="menu-item about">关于我们</a>
-      <a class="menu-item product">产品中心</a>
-      <a class="menu-item look">制造实力</a>
-      <a class="menu-item news">新闻资讯</a>
-      <a class="menu-item jobs">加入我们</a>
-      <a class="menu-item contact">联系我们</a>
+      {{#each header.menu}}
+      <a class="menu-item {{key}} {{#if selected}}selected{{/if}}">{{text}}</a>
+      {{/each}}
     </div>
     <div class="language">
       <a class="cn">中文</a>
@@ -30,6 +26,5 @@
     $(".et-header .language .cn").on("click", setLang.bind(null, "cn"))
     $(".et-header .language .en").on("click", setLang.bind(null, "en"))
     $(`.et-header .language .${getLang()}`).addClass("selected")
-    $(`.et-header .menu .menu-item.${getLocation()}`).addClass("selected")
   })()
 </script>

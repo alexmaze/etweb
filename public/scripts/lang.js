@@ -6,8 +6,3 @@ function setLang(lang) {
 function getLang() {
   return Cookies.get("x-etweb-lang") || "cn"
 }
-
-function getLocation() {
-  // TODO
-  return "index"
-}

@@ -10,9 +10,11 @@ import { IndexController } from "./index.controller"
 import { LanguageMiddleware } from "./language.middleware"
 
 import * as cookieParser from "cookie-parser"
+import { CommonService } from "./services/common.service"
 
 @Module({
   imports: [MainModule, MediaModule],
+  providers: [CommonService],
   controllers: [IndexController]
 })
 export class WwwModule implements NestModule {
