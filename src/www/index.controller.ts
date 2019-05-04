@@ -16,6 +16,7 @@ import {
   WebPosition,
   CommonService
 } from "./services/common.service"
+import { LookService } from "src/main/look.service"
 
 @Controller("/")
 export class IndexController {
@@ -31,11 +32,20 @@ export class IndexController {
   @Inject()
   articleServ: ArticleService
 
+  @Inject()
+  lookServ: LookService
+
   @Get()
   @Render("index")
   async root(@Headers(ETWEB_LANGUAGE) lang: LanguageType) {
     const common = await this.commonServ.getCommonData(lang, WebPosition.Index)
     const products = await this.productServ.list({ page: 1, size: 16 }, lang)
+    const news = await this.articleServ.list(
+      { page: 1, size: 16 },
+      ArticleType.News,
+      lang
+    )
+    const looks = await this.lookServ.list({ page: 1, size: 16 }, lang)
 
     const ret = {
       ...common,
@@ -65,8 +75,15 @@ export class IndexController {
             : "集生产、研发、销售于一体",
         _more: lang === LanguageType.English ? "More" : "了解更多",
         items: (products && products.data) || []
+      },
+      looks: {
+        title: lang === LanguageType.English ? "Photos" : "厂房容貌",
+        items: (looks && looks.data) || []
+      },
+      news: {
+        title: lang === LanguageType.English ? "News" : "新闻资讯",
+        items: (news && news.data) || []
       }
-      // news: await this.articleServ.list({ page: 1, size: 16 }, ArticleType.News)
     }
 
     return ret

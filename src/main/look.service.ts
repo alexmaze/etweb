@@ -4,6 +4,7 @@ import { Repository } from "typeorm"
 import { MediaService } from "../media/media.service"
 import { IPageReq, Pager } from "../lib/page"
 import { LookEntity } from "./look.entity"
+import { LanguageType } from "./variable.entity"
 
 @Injectable()
 export class LookService {
@@ -15,13 +16,21 @@ export class LookService {
     private readonly repo: Repository<LookEntity>
   ) {}
 
-  async list(params: IPageReq) {
+  async list(params: IPageReq, lang: LanguageType) {
     const res = await new Pager(params, this.repo).getPage()
 
     if (res && res.data) {
       for (const item of res.data) {
+        const { resource } = await this.show(item.id)
+        item.resource = resource
+
         if (item.resource != null) {
           item.resource.withUrl(this.mediaService)
+        }
+
+        if (lang === LanguageType.English) {
+          item.title = item.titleEn
+          item.subTitle = item.subTitleEn
         }
       }
     }
