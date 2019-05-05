@@ -27,8 +27,8 @@ export class AboutController {
           selected: true
         },
         {
-          title: lang === LanguageType.English ? "Honors" : "荣誉资质",
-          href: "/honor",
+          title: lang === LanguageType.English ? "Qualification" : "荣誉资质",
+          href: "/about/qualification",
           selected: false
         }
       ],
@@ -37,6 +37,39 @@ export class AboutController {
         content: common.variables[VariableKeys.AboutUs].value
       }
     }
+
+    return ret
+  }
+
+  @Get("/qualification")
+  @Render("about-honor")
+  async honor(@Headers(ETWEB_LANGUAGE) lang: LanguageType) {
+    const common = await this.commonServ.getCommonData(lang, WebPosition.About)
+
+    const honors = await this.honorServ.list({ page: 1, size: 1000 }, lang)
+
+    const ret = {
+      ...common,
+      menu_title: lang === LanguageType.English ? "About Us" : "关于我们",
+      menu: [
+        {
+          title: lang === LanguageType.English ? "Introduction" : "公司简介",
+          href: "/about",
+          selected: false
+        },
+        {
+          title: lang === LanguageType.English ? "Qualification" : "荣誉资质",
+          href: "/about/qualification",
+          selected: true
+        }
+      ],
+      honor: {
+        title: lang === LanguageType.English ? "Qualification" : "荣誉资质",
+        items: (honors && honors.data) || []
+      }
+    }
+
+    console.log(JSON.stringify(ret.honor.items, null, 2))
 
     return ret
   }
