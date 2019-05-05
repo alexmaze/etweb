@@ -23,7 +23,9 @@ export enum VariableKeys {
   Index2Photo = "index_2_photo", // 首页第二行图片地址
   Index2Title = "index_2_title", // 首页第二行标题
   Index2SubTitle = "index_2_sub_title", // 首页第二行副标题
-  Index2Text = "index_2_text" // 首页第二行正文
+  Index2Text = "index_2_text", // 首页第二行正文
+
+  AboutUs = "about_us" // 关于我们
 }
 
 export enum LanguageType {

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="{{lang}}">
+
+<head>
+  {{> base}}
+  <title>{{title}}</title>
+
+  <link rel="stylesheet" type="text/css" href="/css/about.css" />
+
+</head>
+
+<body>
+  {{> header}}
+
+  <main class="page-about">
+    <div class="inner-wrapper">
+      <nav class="about-menu">
+        <div class="title">{{menu_title}}</div>
+        {{#each menu}}
+        <a href="{{href}}" class="{{#if selected}}selected{{/if}}">{{title}}</a>
+        {{/each}}
+      </nav>
+      <article class="about-content">
+        <h1 class="with-color-tag">{{intro.title}}</h1>
+        {{{intro.content}}}
+      </article>
+    </div>
+  </main>
+
+  {{> footer}}
+
+  <script>
+    var h2s = $("h2");
+    for (var i = 0; i < h2s.length; i++) {
+      var h = h2s[i];
+      h.innerHTML = `<span>${h.innerText}</span>`
+    }
+  </script>
+</body>
+
+</html>

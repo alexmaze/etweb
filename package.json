@@ -9,6 +9,7 @@
     "build": "tsc -p tsconfig.build.json",
     "format": "prettier --write \"src/**/*.ts\"",
     "dev": "npm run start:dev",
+    "dev:less": "gulp watch",
     "start": "NODE_ENV=development ts-node -r tsconfig-paths/register src/main.ts",
     "start:dev": "NODE_ENV=development nodemon",
     "start:debug": "NODE_ENV=development nodemon --config nodemon-debug.json",
