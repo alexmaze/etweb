@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="{{lang}}">
+
+<head>
+  {{> base}}
+  <title>{{title}}</title>
+
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+  <link rel="stylesheet" type="text/css" href="/css/slick-theme.css" />
+  <link rel="stylesheet" type="text/css" href="/css/look.css" />
+
+</head>
+
+<body>
+  {{> header}}
+
+  <main class="page-look">
+    <div class="inner-wrapper">
+      <nav class="look-menu">
+        <div class="title">{{menu_title}}</div>
+        {{#each menu}}
+        <a href="{{href}}" class="{{#if selected}}selected{{/if}}">{{title}}</a>
+        {{/each}}
+      </nav>
+      <article class="look-content">
+        <h1 class="with-color-tag">{{selected.title}}</h1>
+
+        <div class="looks-wrapper">
+          <div class="looks-showcase">
+            {{#each items}}
+            <div class="look-item" data-url="{{resource.rawUrl}}">
+              <div class="look-img" style="background-image: url({{resource.rawUrl}})"></div>
+              <div class="look-title">{{title}}</div>
+            </div>
+            {{/each}}
+          </div>
+        </div>
+
+      </article>
+    </div>
+  </main>
+
+  {{> footer}}
+
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script>
+    $('.looks-showcase').slick({
+      dots: false,
+      infinite: true,
+      slidesToShow: 5,
+      slidesToScroll: 1,
+      centerMode: true,
+      centerPadding: '20px',
+      autoplay: true,
+      autoplaySpeed: 3000,
+      cssEase: 'linear',
+    });
+
+    setInterval(function () {
+      var item = $(".looks-showcase .slick-current")[0]
+      if (!item || !item.dataset || !item.dataset.url) {
+        return
+      }
+
+      var url = item.dataset.url
+
+      if (window.__look_current_url === url) {
+        return
+      }
+
+      window.__look_current = url
+      // 触发更新
+      $(".looks-wrapper")[0].style.backgroundImage = `url(${url})`
+
+    }, 100)
+  </script>
+</body>
+
+</html>

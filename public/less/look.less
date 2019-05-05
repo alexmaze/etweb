@@ -1,0 +1,150 @@
+.page-look {
+  padding: 40px 0;
+  position: relative;
+  background-repeat: no-repeat;
+
+  .inner-wrapper {
+    position: relative;
+    z-index: 2;
+    width: 1200px;
+    background: #ffffff;
+    margin: auto;
+    box-shadow: 0 2px 24px 0px #00000024;
+
+    display: flex;
+    .look-menu {
+      box-sizing: border-box;
+      width: 160px;
+      flex-shrink: 0;
+      flex-grow: 0;
+      background: #fafafa;
+      padding: 80px 0 0 48px;
+      color: #999999;
+      .title {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 16px;
+      }
+      a {
+        display: block;
+        line-height: 36px;
+        font-size: 12px;
+        &.selected {
+          color: #333333;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .look-content {
+      padding: 80px 48px;
+      flex-grow: 1;
+      h1 {
+        color: #333333;
+        font-size: 40px;
+        font-weight: normal;
+        margin: 0 0 40px 0;
+      }
+
+      .looks-wrapper {
+        height: 600px;
+        margin: auto;
+        background: #00000017;
+        padding: 25px 20px 0;
+        position: relative;
+        box-sizing: border-box;
+        background-size: cover;
+        background-position: 50% 50%;
+      }
+
+      .looks-showcase {
+        position: absolute;
+        bottom: 0;
+        left: 50px;
+        margin-bottom: 25px;
+        width: 90%;
+        .slick-arrow {
+          position: absolute;
+          top: 20px;
+          width: 20px;
+          height: 40px;
+          color: #000000;
+          background: currentColor;
+          overflow: hidden;
+          outline: none;
+          border: none;
+          &:after {
+            content: "\20";
+            display: block;
+            width: 11px;
+            height: 20px;
+            background: currentColor;
+            z-index: 10;
+            top: 10px;
+            position: absolute;
+            right: -3px;
+          }
+          &:before {
+            content: "\20";
+            z-index: 9;
+            display: block;
+            width: 11px;
+            height: 11px;
+            border: 1px solid #fff;
+            position: absolute;
+            left: 8px;
+            top: 15px;
+            transform: rotate(45deg);
+          }
+        }
+        .slick-prev {
+          left: -34px;
+          z-index: 10;
+        }
+        .slick-next {
+          right: -32px;
+          &:after {
+            left: -3px;
+          }
+          &:before {
+            left: auto;
+            right: 8px;
+          }
+        }
+        .look-item {
+          display: block;
+          outline: none;
+
+          &.slick-current {
+            .look-title {
+              color: #39a9ff;
+            }
+            .look-img {
+              box-shadow: 0 0 0 2px #39a9ff inset;
+            }
+          }
+
+          .look-title {
+            width: 144px;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #fff;
+          }
+
+          .look-img {
+            width: 144px;
+            height: 80px;
+            background-color: #ffffff;
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            background-size: contain;
+          }
+
+          &.slick-active .product-img {
+            box-shadow: 0 2px 34px 0 #0000000e;
+          }
+        }
+      }
+    }
+  }
+}
