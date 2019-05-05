@@ -8,11 +8,13 @@ import {
   Patch,
   ParseIntPipe,
   Post,
-  Query
+  Query,
+  UseGuards
 } from "@nestjs/common"
 import { HonorService } from "../main/honor.service"
 import { HonorEntity } from "../main/honor.entity"
 import { IPageReq } from "../lib/page"
+import { AuthGuard } from "@nestjs/passport"
 
 @Controller("/api/admin/honor")
 export class HonorController {
@@ -20,7 +22,7 @@ export class HonorController {
   service: HonorService
 
   @Get("/")
-  // TODO @UseGuards(AuthGuard())
+  @UseGuards(AuthGuard())
   list(
     @Query()
     query: IPageReq
@@ -29,22 +31,26 @@ export class HonorController {
   }
 
   @Post("/")
+  @UseGuards(AuthGuard())
   create(@Body() data: HonorEntity) {
     return this.service.create(data)
   }
 
   @Get("/:id")
+  @UseGuards(AuthGuard())
   show(@Param("id", ParseIntPipe) id: number) {
     return this.service.show(id)
   }
 
   @Patch("/:id")
+  @UseGuards(AuthGuard())
   update(@Param("id", ParseIntPipe) id, @Body() data: HonorEntity) {
     data.id = id
     return this.service.update(data)
   }
 
   @Delete("/:id")
+  @UseGuards(AuthGuard())
   remove(@Param("id", ParseIntPipe) id) {
     return this.service.remove(id)
   }

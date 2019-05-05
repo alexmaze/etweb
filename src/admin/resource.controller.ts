@@ -12,11 +12,13 @@ import {
   Delete,
   Patch,
   Logger,
-  ParseIntPipe
+  ParseIntPipe,
+  UseGuards
 } from "@nestjs/common"
 import { ResourceService } from "../media/resource.service"
 import { IPageReq } from "../lib/page"
 import { ResourceEntity } from "../media/resource.entity"
+import { AuthGuard } from "@nestjs/passport"
 
 @Controller("/api/admin/resource")
 export class ResourceController {
@@ -24,6 +26,7 @@ export class ResourceController {
   resourceService: ResourceService
 
   @Post("upload")
+  @UseGuards(AuthGuard())
   @UseInterceptors(FileInterceptor("file"))
   async upload(@UploadedFile() file) {
     try {
@@ -36,16 +39,19 @@ export class ResourceController {
   }
 
   @Get("/")
+  @UseGuards(AuthGuard())
   list(@Query() query: IPageReq) {
     return this.resourceService.list(query)
   }
 
   @Get("/:id")
+  @UseGuards(AuthGuard())
   show(@Param("id", ParseIntPipe) id) {
     return this.resourceService.show(id)
   }
 
   @Patch("/:id")
+  @UseGuards(AuthGuard())
   update(
     @Param("id", ParseIntPipe) id,
     @Body() { description }: ResourceEntity
@@ -54,6 +60,7 @@ export class ResourceController {
   }
 
   @Delete("/:id")
+  @UseGuards(AuthGuard())
   remove(@Param("id", ParseIntPipe) id) {
     return this.resourceService.remove(id)
   }
