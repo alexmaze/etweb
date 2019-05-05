@@ -22,7 +22,9 @@ export class LookService {
         ? {
             type
           }
-        : null
+        : null,
+      "weight",
+      "DESC"
     )
 
     if (res && res.data) {

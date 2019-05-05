@@ -16,7 +16,11 @@ export class PositionService {
   ) {}
 
   async list(params: IPageReq) {
-    const res = await new Pager(params, this.repo).getPage()
+    const res = await new Pager(params, this.repo).getPage(
+      null,
+      "weight",
+      "DESC"
+    )
     return res
   }
 

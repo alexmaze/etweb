@@ -17,7 +17,11 @@ export class ProductService {
   ) {}
 
   async list(params: IPageReq, lang?: LanguageType) {
-    const res = await new Pager(params, this.repo).getPage()
+    const res = await new Pager(params, this.repo).getPage(
+      null,
+      "weight",
+      "DESC"
+    )
 
     if (res && res.data) {
       for (const item of res.data) {

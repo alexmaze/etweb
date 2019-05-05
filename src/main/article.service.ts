@@ -22,7 +22,9 @@ export class ArticleService {
         ? {
             type
           }
-        : null
+        : null,
+      "createdAt",
+      "DESC"
     )
 
     if (res && res.data) {
