@@ -7,6 +7,7 @@ import { ArticleType } from "src/main/article.entity"
 import { ETWEB_LANGUAGE } from "./language.middleware"
 import { WebPosition, CommonService } from "./services/common.service"
 import { LookService } from "src/main/look.service"
+import { LookType } from "src/main/look.entity"
 
 @Controller("/")
 export class IndexController {
@@ -35,7 +36,11 @@ export class IndexController {
       ArticleType.News,
       lang
     )
-    const looks = await this.lookServ.list({ page: 1, size: 16 }, lang)
+    const looks = await this.lookServ.list(
+      { page: 1, size: 16 },
+      LookType.Factory,
+      lang
+    )
 
     const newsItems = (news && news.data && news.data) || []
     newsItems.forEach(item => {

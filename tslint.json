@@ -15,6 +15,7 @@
     "object-literal-sort-keys": false,
     "semicolon": [true, "never"],
     "quotemark": [true, "double", "jsx-double", "avoid-escape"],
+    "no-string-literal": false,
     "trailing-comma": [
       true,
       {

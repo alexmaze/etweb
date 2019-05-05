@@ -16,7 +16,7 @@ export class HonorService {
     private readonly repo: Repository<HonorEntity>
   ) {}
 
-  async list(params: IPageReq, lang: LanguageType) {
+  async list(params: IPageReq, lang?: LanguageType) {
     const res = await new Pager(params, this.repo).getPage()
 
     if (res && res.data) {

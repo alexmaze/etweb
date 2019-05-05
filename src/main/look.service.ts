@@ -3,7 +3,7 @@ import { InjectRepository } from "@nestjs/typeorm"
 import { Repository } from "typeorm"
 import { MediaService } from "../media/media.service"
 import { IPageReq, Pager } from "../lib/page"
-import { LookEntity } from "./look.entity"
+import { LookEntity, LookType } from "./look.entity"
 import { LanguageType } from "./variable.entity"
 
 @Injectable()
@@ -16,8 +16,14 @@ export class LookService {
     private readonly repo: Repository<LookEntity>
   ) {}
 
-  async list(params: IPageReq, lang: LanguageType) {
-    const res = await new Pager(params, this.repo).getPage()
+  async list(params: IPageReq, type?: LookType, lang?: LanguageType) {
+    const res = await new Pager(params, this.repo).getPage(
+      !!type
+        ? {
+            type
+          }
+        : null
+    )
 
     if (res && res.data) {
       for (const item of res.data) {
