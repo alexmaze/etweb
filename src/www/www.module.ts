@@ -12,11 +12,12 @@ import { LanguageMiddleware } from "./language.middleware"
 import * as cookieParser from "cookie-parser"
 import { CommonService } from "./services/common.service"
 import { AboutController } from "./about.controller"
+import { ProductController } from "./product.controller"
 
 @Module({
   imports: [MainModule, MediaModule],
   providers: [CommonService],
-  controllers: [IndexController, AboutController]
+  controllers: [IndexController, AboutController, ProductController]
 })
 export class WwwModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {

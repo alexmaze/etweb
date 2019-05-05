@@ -1,0 +1,111 @@
+.page-product {
+  padding: 40px 0;
+  position: relative;
+
+  .inner-wrapper {
+    position: relative;
+    z-index: 2;
+    width: 1200px;
+    background: #ffffff;
+    margin: auto;
+    display: flex;
+
+    .product-menu {
+      box-sizing: border-box;
+      width: 160px;
+      flex-shrink: 0;
+      flex-grow: 0;
+      background: #fafafa;
+      padding: 80px 0 0 30px;
+      color: #999999;
+      .title {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 16px;
+      }
+      a {
+        display: block;
+        line-height: 36px;
+        font-size: 12px;
+        &.selected {
+          color: #333333;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .product-detail {
+      padding: 80px 60px;
+      display: flex;
+      flex-grow: 1;
+
+      .product-img {
+        width: 200px;
+        height: 400px;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        background-size: contain;
+        margin: 0 30px;
+        flex-grow: 0;
+      }
+      .product-info {
+        flex-grow: 1;
+        .detail-title {
+          color: #999999;
+          font-size: 16px;
+          margin-bottom: 7px;
+        }
+        margin-left: 78px;
+        .with-color-tag {
+          &:after {
+            margin-top: 20px;
+          }
+          position: relative;
+          .contact {
+            width: 36px;
+            height: 36px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            background-image: url(/images/call.png);
+            background-size: contain;
+            cursor: pointer;
+            &:hover {
+              opacity: 0.8;
+            }
+          }
+        }
+      }
+
+      .contact-us {
+        width: 148px;
+        height: 40px;
+        font-size: 14px;
+        color: #ffffff;
+        font-weight: bold;
+        background: linear-gradient(to left bottom, #4fccff, #2181fe);
+        border: none;
+        border-radius: 2px;
+        outline: none;
+        margin-top: 30px;
+        cursor: pointer;
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+
+      p {
+        margin: 0 0 10px 0;
+        color: #999999;
+        font-size: 12px;
+      }
+
+      h3 {
+        font-size: 16px;
+        color: #333333;
+        font-weight: bold;
+        margin: 20px 0 10px 0;
+      }
+    }
+  }
+}

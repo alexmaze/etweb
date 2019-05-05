@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="{{lang}}">
+
+<head>
+  {{> base}}
+  <title>{{title}}</title>
+
+  <link rel="stylesheet" type="text/css" href="/css/product.css" />
+
+</head>
+
+<body>
+  {{> header}}
+
+  <main class="page-product">
+    <div class="inner-wrapper">
+      <nav class="product-menu">
+        <div class="title">{{menu_title}}</div>
+        {{#each items}}
+        <a href="/product/{{id}}" class="{{#if selected}}selected{{/if}}">{{title}}</a>
+        {{/each}}
+      </nav>
+      <div class="product-detail">
+        <aside class="product-img" style="background-image: url({{selected.cover.rawUrl}})">
+        </aside>
+        <article class="product-info">
+          <p class="detail-title">{{detail_title}}</p>
+          <h1 class="with-color-tag">{{selected.title}}
+            <div class="contact"></div>
+          </h1>
+          {{{selected.content}}}
+          <button class="contact-us">{{_contact_us}}</button>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  {{> footer}}
+
+</body>
+
+</html>
