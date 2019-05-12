@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="{{lang}}">
+
+<head>
+  {{> base}}
+  <title>{{title}}</title>
+  <link rel="stylesheet" type="text/css" href="/css/article.css" />
+</head>
+
+<body>
+  {{> header}}
+
+  <main class="page-article-list">
+
+    <nav class="article-menu">
+      {{#each menu}}
+      <a href="{{href}}" class="{{#if selected}}selected{{/if}}">{{title}}</a>
+      {{/each}}
+    </nav>
+
+    <div class="article-list">
+      {{#each data.data}}
+      <a class="article-item" href="/article/detail/{{id}}">
+        <div class="article-cover" style="background-image: url({{cover.rawUrl}})"></div>
+        <div class="article-title">
+          <span>
+            {{title}}
+          </span>
+          {{#if isHot}}
+          <i class="icon-hot"></i>
+          {{/if}}
+        </div>
+        <div class="article-info">{{content}}...</div>
+        <div class="article-sub">
+          <div>
+            {{#if isTop}}
+            <i class="icon-top">{{../_top}}</i>{{/if}}
+            <span class="article-time">{{_createdAt}}</span>
+          </div>
+          <div><i class="icon-eye"></i>{{viewCount}}</div>
+        </div>
+      </a>
+      {{/each}}
+    </div>
+
+    <div class="pagination">
+      {{#if pagination.hasPre}}
+      <a href="{{pagination.preUrl}}">{{pagination.preText}}</a>
+      {{/if}}
+      {{#if pagination.hasNext}}
+      <a href="{{pagination.nextUrl}}">{{pagination.nextText}}</a>
+      {{/if}}
+    </div>
+
+  </main>
+
+  {{> footer}}
+</body>
+
+</html>
