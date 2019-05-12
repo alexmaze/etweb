@@ -39,20 +39,20 @@ export class ArticleController {
 
     news.data.forEach((item: any) => {
       if (item.content) {
-        item.content = item.content.replace(/<[^>]+>|&[^>]+;/g, "").trim()
-        item._createdAt = item.createdAt
-          .toISOString()
-          .substr(0, 10)
+        item.content = item.content
+          .replace(/<[^>]+>|&[^>]+;/g, "")
+          .trim()
           .substr(0, 100)
+        item._createdAt = item.createdAt.toISOString().substr(0, 10)
       }
     })
     shares.data.forEach((item: any) => {
       if (item.content) {
-        item.content = item.content.replace(/<[^>]+>|&[^>]+;/g, "").trim()
-        item._createdAt = item.createdAt
-          .toISOString()
-          .substr(0, 10)
+        item.content = item.content
+          .replace(/<[^>]+>|&[^>]+;/g, "")
+          .trim()
           .substr(0, 100)
+        item._createdAt = item.createdAt.toISOString().substr(0, 10)
       }
     })
 
@@ -69,26 +69,43 @@ export class ArticleController {
       _top: lang === LanguageType.English ? "STICK" : "置顶"
     } as any
 
-    ret._data = JSON.stringify(ret)
-
     return ret
   }
 
-  @Get("/:id")
+  @Get("/detail/:id")
   @Render("article-detail")
   async detail(
     @Headers(ETWEB_LANGUAGE) lang: LanguageType,
     @Param("id", ParseIntPipe) id: number
   ) {
     const common = await this.commonServ.getCommonData(lang, WebPosition.News)
-    const data = await this.articleServ.show(id)
+    const data: any = await this.articleServ.show(id)
+
+    const others = await this.articleServ.list(
+      { page: 1, size: 3 },
+      data.type,
+      lang
+    )
+    others.data.forEach((item: any) => {
+      if (item.content) {
+        item.content = item.content
+          .replace(/<[^>]+>|&[^>]+;/g, "")
+          .trim()
+          .substr(0, 100)
+      }
+    })
 
     data.viewCount++
     this.articleServ.update(data)
 
+    data._createdAt = data.createdAt.toISOString().substr(0, 10)
+
     const ret = {
       ...common,
-      data
+      data,
+      others: others.data,
+      _others: lang === LanguageType.English ? "Others" : "其他资讯",
+      _top: lang === LanguageType.English ? "STICK" : "置顶"
     }
 
     return ret

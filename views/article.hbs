@@ -15,7 +15,7 @@
 
     <div class="article-list">
       {{#each news}}
-      <div class="article-item">
+      <a class="article-item" href="/article/detail/{{id}}">
         <div class="article-cover" style="background-image: url({{cover.rawUrl}})"></div>
         <div class="article-title">
           <span>
@@ -34,23 +34,23 @@
           </div>
           <div><i class="icon-eye"></i>{{viewCount}}</div>
         </div>
-      </div>
+      </a>
       {{/each}}
 
       <div class="article-share-top">
         <div class="shares-title">{{_share}}</div>
         <div class="shares-list">
           {{#each sharesTop}}
-          <div class="share-item" style="background-image: url({{cover.rawUrl}})">
+          <a class="share-item" href="/article/detail/{{id}}" style="background-image: url({{cover.rawUrl}})">
             <div class="share-title">{{title}}</div>
             <div class="share-content">{{content}}</div>
-          </div>
+          </a>
           {{/each}}
         </div>
       </div>
 
       {{#each sharesLeft}}
-      <div class="article-item">
+      <a class="article-item" href="/article/detail/{{id}}">
         <div class="article-cover" style="background-image: url({{cover.rawUrl}})"></div>
         <div class="article-title">
           <span>
@@ -69,19 +69,15 @@
           </div>
           <div><i class="icon-eye"></i>{{viewCount}}</div>
         </div>
-      </div>
+      </a>
       {{/each}}
     </div>
 
-    <a class="more">{{_more}}</a>
+    <a class="more" href="/article/news">{{_more}}</a>
 
   </main>
 
   {{> footer}}
-
-  <script>
-    console.log({{{ _data }}})
-  </script>
 </body>
 
 </html>

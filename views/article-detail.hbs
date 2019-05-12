@@ -4,13 +4,48 @@
 <head>
   {{> base}}
   <title>{{title}}</title>
-  <link rel="stylesheet" type="text/css" href="/css/news.css" />
+  <link rel="stylesheet" type="text/css" href="/css/article.css" />
 </head>
 
 <body>
   {{> header}}
 
-  <main class="page-news-detail">
+  <main class="page-article-detail">
+    <article class="article">
+      <h1 class="article-title">{{data.title}}</h1>
+      <p class="info">
+        <span>{{variables.name.value}}</span>
+        /
+        <span>{{data._createdAt}}</span>
+
+        <span class="view-count">
+          <i class="icon-eye"></i>
+          {{data.viewCount}}
+        </span>
+
+
+        {{#if data.isTop}}
+        <i class="icon-top">{{_top}}</i>{{/if}}
+        {{#if data.isHot}}
+        <i class="icon-hot"></i>
+        {{/if}}
+      </p>
+
+      {{{data.content}}}
+    </article>
+
+
+    <div class="article-share-top">
+      <div class="shares-title">{{_others}}</div>
+      <div class="shares-list">
+        {{#each others}}
+        <a class="share-item" href="/article/detail/{{id}}" style="background-image: url({{cover.rawUrl}})">
+          <div class="share-title">{{title}}</div>
+          <div class="share-content">{{content}}</div>
+        </a>
+        {{/each}}
+      </div>
+    </div>
 
   </main>
 
