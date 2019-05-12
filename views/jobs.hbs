@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="{{lang}}">
+
+<head>
+  {{> base}}
+  <title>{{title}}</title>
+  <link rel="stylesheet" type="text/css" href="/css/jobs.css" />
+</head>
+
+<body>
+  {{> header}}
+
+  <main class="page-jobs">
+    <h1 class="with-color-tag">{{texts.page_title}}</h1>
+
+    <div class="inner-wrapper">
+      <nav class="jobs-menu">
+        <div class="title">{{texts.menu_title}}</div>
+        {{#each items}}
+        <a href="/jobs/{{id}}" class="{{#if selected}}selected{{/if}}">{{title}}</a>
+        {{/each}}
+      </nav>
+      <article class="job-info">
+        <div class="job-info-title">{{texts.page_sub_title}}</div>
+        <h1 class="job-title with-color-tag">{{selected.title}}</h1>
+        <div class="job-content">
+          {{{selected.content}}}
+        </div>
+        <button class="contact-us">{{texts.contact_us}}</button>
+      </article>
+    </div>
+
+  </main>
+
+  {{> footer}}
+</body>
+
+</html>

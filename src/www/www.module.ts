@@ -15,6 +15,7 @@ import { AboutController } from "./about.controller"
 import { ProductController } from "./product.controller"
 import { LookController } from "./look.controller"
 import { ArticleController } from "./article.controller"
+import { JobsController } from "./jobs.controller"
 
 @Module({
   imports: [MainModule, MediaModule],
@@ -24,7 +25,8 @@ import { ArticleController } from "./article.controller"
     AboutController,
     ProductController,
     LookController,
-    ArticleController
+    ArticleController,
+    JobsController
   ]
 })
 export class WwwModule implements NestModule {

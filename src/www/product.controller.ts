@@ -48,6 +48,7 @@ export class ProductController {
     if (products && products.data) {
       if (id == null) {
         selected = products.data[0] || {}
+        selected.selected = true
       } else {
         selected = products.data.find(i => i.id === id) || {}
         selected.selected = true
