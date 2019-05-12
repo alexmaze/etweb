@@ -14,6 +14,7 @@ import { CommonService } from "./services/common.service"
 import { AboutController } from "./about.controller"
 import { ProductController } from "./product.controller"
 import { LookController } from "./look.controller"
+import { ArticleController } from "./article.controller"
 
 @Module({
   imports: [MainModule, MediaModule],
@@ -22,7 +23,8 @@ import { LookController } from "./look.controller"
     IndexController,
     AboutController,
     ProductController,
-    LookController
+    LookController,
+    ArticleController
   ]
 })
 export class WwwModule implements NestModule {

@@ -30,7 +30,7 @@ export enum WebPosition {
   About = "about",
   Product = "product",
   Look = "look",
-  News = "news",
+  News = "article",
   Jobs = "jobs",
   Contact = "contact"
 }

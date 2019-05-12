@@ -69,8 +69,6 @@ export class AboutController {
       }
     }
 
-    console.log(JSON.stringify(ret.honor.items, null, 2))
-
     return ret
   }
 }
