@@ -21,15 +21,14 @@
         {{/each}}
       </nav>
       <div class="product-detail">
-        <aside class="product-img" style="background-image: url({{selected.cover.rawUrl}})">
-        </aside>
+        <aside class="product-img" style="background-image: url({{selected.cover.rawUrl}})"></aside>
         <article class="product-info">
           <p class="detail-title">{{detail_title}}</p>
           <h1 class="with-color-tag">{{selected.title}}
-            <div class="contact"></div>
+            <a href="/contact" class="contact"></a>
           </h1>
           {{{selected.content}}}
-          <button class="contact-us">{{_contact_us}}</button>
+          <a class="contact-us" href="/contact">{{_contact_us}}</a>
         </article>
       </div>
     </div>

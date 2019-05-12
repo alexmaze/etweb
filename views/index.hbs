@@ -33,16 +33,16 @@
       <div class="intro-sub-title">{{intro.subTitle}}</div>
       <div class="intro-content">
         {{{intro.text}}}
-        <a class="intro-content-more">
+        <a class="intro-content-more" href="/about">
           {{intro._more}}
         </a>
       </div>
       <div class="intro-link">
-        <a class="intro-link-item">
+        <a class="intro-link-item" href="/about">
           <div class="intro-link-title">{{intro._link_1}}</div>
           <div class="intro-link-sub-title">{{intro._link_1_sub}}</div>
         </a>
-        <a class="intro-link-item">
+        <a class="intro-link-item" href="/about/qualification">
           <div class="intro-link-title">{{intro._link_2}}</div>
           <div class="intro-link-sub-title">{{intro._link_2_sub}}</div>
         </a>
@@ -61,7 +61,7 @@
       </div>
       {{/each}}
     </div>
-    <a class="products-more">
+    <a class="products-more" href="/product">
       {{products._more}}
     </a>
   </div>
@@ -84,13 +84,13 @@
     <div class="title">{{news.title}}</div>
     <div class="news-content">
       {{#each news.items}}
-      <div class="news-item" style="background-image: url({{cover.rawUrl}})">
+      <a href="/article/detail/{{id}}" class="news-item" style="background-image: url({{cover.rawUrl}})">
         <div class="news-title">{{title}}</div>
         <div class="news-text">{{content}}</div>
-      </div>
+      </a>
       {{/each}}
     </div>
-    <a class="news-more">
+    <a class="news-more" href="/article">
       {{news._more}}
     </a>
   </div>
