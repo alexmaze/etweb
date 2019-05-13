@@ -26,6 +26,7 @@ module.exports = {
       ref: "origin/master",
       repo: "git@github.com:yanhao1991/etweb.git",
       path: "/var/www/etweb",
+      "pre-setup": "git reset --hard HEAD",
       "post-deploy":
         "yarn && ln -sf /root/configs/etweb.json ./config/production.json && npm run prestart:prod && pm2 reload ecosystem.config.js --env production"
     }
