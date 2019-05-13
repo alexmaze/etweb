@@ -1,6 +1,6 @@
-import { LanguageType, VariableKeys } from "src/main/variable.entity"
+import { LanguageType, VariableKeys } from "../../main/variable.entity"
 import { Injectable, Inject } from "@nestjs/common"
-import { VariableService } from "src/main/variable.service"
+import { VariableService } from "../../main/variable.service"
 
 @Injectable()
 export class CommonService {

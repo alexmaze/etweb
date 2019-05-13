@@ -2,8 +2,8 @@ import { Controller, Get, Render, Inject, Headers, Param } from "@nestjs/common"
 import { LanguageType, VariableKeys } from "../main/variable.entity"
 import { ETWEB_LANGUAGE } from "./language.middleware"
 import { WebPosition, CommonService } from "./services/common.service"
-import { LookService } from "src/main/look.service"
-import { LookType } from "src/main/look.entity"
+import { LookService } from "../main/look.service"
+import { LookType } from "../main/look.entity"
 
 @Controller("/look")
 export class LookController {

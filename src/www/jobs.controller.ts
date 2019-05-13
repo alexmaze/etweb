@@ -10,7 +10,7 @@ import {
 import { LanguageType } from "../main/variable.entity"
 import { ETWEB_LANGUAGE } from "./language.middleware"
 import { WebPosition, CommonService } from "./services/common.service"
-import { PositionService } from "src/main/position.service"
+import { PositionService } from "../main/position.service"
 
 @Controller("/jobs")
 export class JobsController {

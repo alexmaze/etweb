@@ -1,13 +1,13 @@
 import { Controller, Get, Render, Inject, Headers } from "@nestjs/common"
 import { LanguageType } from "../main/variable.entity"
 import { BannerService } from "../main/banner.service"
-import { ProductService } from "src/main/product.service"
-import { ArticleService } from "src/main/article.service"
-import { ArticleType } from "src/main/article.entity"
+import { ProductService } from "../main/product.service"
+import { ArticleService } from "../main/article.service"
+import { ArticleType } from "../main/article.entity"
 import { ETWEB_LANGUAGE } from "./language.middleware"
 import { WebPosition, CommonService } from "./services/common.service"
-import { LookService } from "src/main/look.service"
-import { LookType } from "src/main/look.entity"
+import { LookService } from "../main/look.service"
+import { LookType } from "../main/look.entity"
 
 @Controller("/")
 export class IndexController {

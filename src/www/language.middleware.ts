@@ -1,4 +1,4 @@
-import { LanguageType } from "src/main/variable.entity"
+import { LanguageType } from "../main/variable.entity"
 
 export const ETWEB_LANGUAGE = "x-etweb-lang"
 

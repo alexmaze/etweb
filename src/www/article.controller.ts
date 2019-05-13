@@ -11,9 +11,9 @@ import {
 import { LanguageType, VariableKeys } from "../main/variable.entity"
 import { ETWEB_LANGUAGE } from "./language.middleware"
 import { WebPosition, CommonService } from "./services/common.service"
-import { ArticleService } from "src/main/article.service"
-import { ArticleType } from "src/main/article.entity"
-import { IPageRes } from "src/lib/page"
+import { ArticleService } from "../main/article.service"
+import { ArticleType } from "../main/article.entity"
+import { IPageRes } from "../lib/page"
 
 @Controller("/article")
 export class ArticleController {
