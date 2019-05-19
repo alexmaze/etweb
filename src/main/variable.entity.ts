@@ -19,6 +19,12 @@ export enum VariableKeys {
   Mobile = "mobile", // 手机
   Tel = "tel", // 座机
   Email = "email", // 邮箱
+
+  Favicon = "favicon", // 网站图标
+  Logo = "logo", // 网站 Logo 地址
+  Latitude = "latitude", // 厂址纬度
+  Longitude = "longitude", // 厂址经度
+
   // 首页参数
   Index2Photo = "index_2_photo", // 首页第二行图片地址
   Index2Title = "index_2_title", // 首页第二行标题

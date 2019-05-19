@@ -76,8 +76,18 @@
       });
     }
     function addMapOverlay() {
+      var lat = parseFloat("{{coord.lat}}")
+      var lng = parseFloat("{{coord.lng}}")
+
       var markers = [
-        { content: "<p style='font-weight: bold; color: #cc531f;'>丹阳市助剂化工厂有限公司</p><p>联系电话：0511-86612753</p><p>地址：丹阳市皇塘镇蒋墅河滨南路60号</p>", title: "", imageOffset: { width: -46, height: -21 }, position: { lat: 31.825649, lng: 119.782343 } }
+        {
+          content: "<p style='font-weight: bold; color: #cc531f;'>{{title}}</p><p>{{texts.tel}}：{{tel}}</p><p>{{texts.address}}：{{address}}</p>",
+          title: "", imageOffset: { width: -46, height: -21 },
+          position: {
+            lat,
+            lng
+          }
+        }
       ];
       for (var index = 0; index < markers.length; index++) {
         var point = new BMap.Point(markers[index].position.lng, markers[index].position.lat);

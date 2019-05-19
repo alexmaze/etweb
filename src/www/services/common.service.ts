@@ -18,6 +18,8 @@ export class CommonService {
       title: `${variables[VariableKeys.Name].value} - ${
         menuTextMap[position][language]
       }`,
+      favicon: variables[VariableKeys.Favicon],
+      logo: variables[VariableKeys.Logo],
       variables
     }
 

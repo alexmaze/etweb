@@ -11,7 +11,10 @@ export class ContactController {
   @Get("/")
   @Render("contact")
   async index(@Headers(ETWEB_LANGUAGE) lang: LanguageType) {
-    const common = await this.commonServ.getCommonData(lang, WebPosition.Jobs)
+    const common = await this.commonServ.getCommonData(
+      lang,
+      WebPosition.Contact
+    )
 
     const ret = {
       ...common,
@@ -21,6 +24,10 @@ export class ContactController {
       mobile: common.variables[VariableKeys.Mobile].value,
       tel: common.variables[VariableKeys.Tel].value,
       email: common.variables[VariableKeys.Email].value,
+      coord: {
+        lat: common.variables[VariableKeys.Latitude].value,
+        lng: common.variables[VariableKeys.Longitude].value
+      },
       texts: {
         page_title: lang === LanguageType.English ? "Contact Us" : "联系我们",
         address: lang === LanguageType.Chinese ? "地址" : "Address",

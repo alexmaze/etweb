@@ -55,7 +55,11 @@ export class VariableService {
     return items
   }
 
-  async allAsMap(lang: LanguageType) {
+  async allAsMap(
+    lang: LanguageType
+  ): Promise<{
+    [key: string]: VariableEntity
+  }> {
     const items = await this.all(lang)
     const ret = Object.create(null)
     items.forEach(item => {
