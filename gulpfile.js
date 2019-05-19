@@ -10,7 +10,7 @@ var targetCSSDir = "public/css"
 gulp.task("css", function() {
   return (
     gulp
-      .src(lessDir + "/*.less")
+      .src(lessDir + "/**/*.less")
       .pipe(less({ style: "compressed" }).on("error", gutil.log))
       //.pipe(autoprefix('last 10 version'))
       .pipe(gulp.dest(targetCSSDir))
@@ -18,5 +18,5 @@ gulp.task("css", function() {
 })
 
 gulp.task("watch", function() {
-  gulp.watch(lessDir + "/*.less", gulp.series("css"))
+  gulp.watch(lessDir + "/**/*.less", gulp.series("css"))
 })

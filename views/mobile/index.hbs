@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="{{lang}}">
+
+<head>
+  {{> mobile_base}}
+  <title>{{title}}</title>
+  <link rel="stylesheet" type="text/css" href="/css/mobile/index.css" />
+</head>
+
+<body>
+  {{> mobile_header}}
+  {{!-- 
+  <div class="banner">
+    {{#each banners}}
+    <div class="banner-item">
+      <img class="banner-img" src="{{resource.rawUrl}}" alt="">
+      <div class="banner-text">
+        <div class="title">{{title}}</div>
+        <div class="subTitle">{{subTitle}}</div>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+
+  <div class="intro">
+    <img src="{{intro.imageUrl}}" alt="" class="intro-photo">
+    <div class="intro-text">
+      <div class="intro-title">{{intro.title}}</div>
+      <div class="intro-sub-title">{{intro.subTitle}}</div>
+      <div class="intro-content">
+        {{{intro.text}}}
+        <a class="intro-content-more" href="/about">
+          {{intro._more}}
+        </a>
+      </div>
+      <div class="intro-link">
+        <a class="intro-link-item" href="/about">
+          <div class="intro-link-title">{{intro._link_1}}</div>
+          <div class="intro-link-sub-title">{{intro._link_1_sub}}</div>
+        </a>
+        <a class="intro-link-item" href="/about/qualification">
+          <div class="intro-link-title">{{intro._link_2}}</div>
+          <div class="intro-link-sub-title">{{intro._link_2_sub}}</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="products">
+    <div class="title">{{products.title}}</div>
+    <div class="sub-title">{{products.subTitle}}</div>
+    <div class="products-showcase">
+      {{#each products.items}}
+      <div class="product-item">
+        <div class="product-img" style="background-image: url({{cover.rawUrl}})"></div>
+        <div class="product-title">{{title}}</div>
+      </div>
+      {{/each}}
+    </div>
+    <a class="products-more" href="/product">
+      {{products._more}}
+    </a>
+  </div>
+
+  <div class="looks">
+    <div class="title">{{looks.title}}</div>
+    <div class="looks-content">
+      <div class="looks-showcase">
+        {{#each looks.items}}
+        <div class="look-item" data-url="{{resource.rawUrl}}">
+          <div class="look-img" style="background-image: url({{resource.rawUrl}})"></div>
+          <div class="look-title">{{title}}</div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+
+  <div class="pnews">
+    <div class="title">{{news.title}}</div>
+    <div class="news-content">
+      {{#each news.items}}
+      <a href="/article/detail/{{id}}" class="news-item" style="background-image: url({{cover.rawUrl}})">
+        <div class="news-title">{{title}}</div>
+        <div class="news-text">{{content}}</div>
+      </a>
+      {{/each}}
+    </div>
+    <a class="news-more" href="/article">
+      {{news._more}}
+    </a>
+  </div> --}}
+
+  {{> mobile_footer}}
+  </script>
+</body>
+
+</html>

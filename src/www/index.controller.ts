@@ -1,4 +1,4 @@
-import { Controller, Get, Render, Inject, Headers } from "@nestjs/common"
+import { Controller, Get, Render, Inject, Headers, Res } from "@nestjs/common"
 import { LanguageType } from "../main/variable.entity"
 import { BannerService } from "../main/banner.service"
 import { ProductService } from "../main/product.service"
@@ -8,6 +8,8 @@ import { ETWEB_LANGUAGE } from "./language.middleware"
 import { WebPosition, CommonService } from "./services/common.service"
 import { LookService } from "../main/look.service"
 import { LookType } from "../main/look.entity"
+import { ETWEB_DEVICE, DeviceType } from "./device.middleware"
+import { Response } from "express"
 
 @Controller("/")
 export class IndexController {
@@ -27,8 +29,11 @@ export class IndexController {
   lookServ: LookService
 
   @Get()
-  @Render("index")
-  async root(@Headers(ETWEB_LANGUAGE) lang: LanguageType) {
+  async root(
+    @Res() res: Response,
+    @Headers(ETWEB_LANGUAGE) lang: LanguageType,
+    @Headers(ETWEB_DEVICE) device: DeviceType
+  ) {
     const common = await this.commonServ.getCommonData(lang, WebPosition.Index)
     const products = await this.productServ.list({ page: 1, size: 6 }, lang)
     const news = await this.articleServ.list(
@@ -89,6 +94,9 @@ export class IndexController {
       }
     }
 
-    return ret
+    return res.render(
+      device === DeviceType.Desktop ? "index" : "mobile/index",
+      ret
+    )
   }
 }

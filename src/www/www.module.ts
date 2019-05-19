@@ -17,6 +17,7 @@ import { LookController } from "./look.controller"
 import { ArticleController } from "./article.controller"
 import { JobsController } from "./jobs.controller"
 import { ContactController } from "./contact.controller"
+import { DeviceMiddleware } from "./device.middleware"
 
 @Module({
   imports: [MainModule, MediaModule],
@@ -34,7 +35,7 @@ import { ContactController } from "./contact.controller"
 export class WwwModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer
-      .apply(cookieParser(), LanguageMiddleware)
+      .apply(cookieParser(), LanguageMiddleware, DeviceMiddleware)
       .forRoutes({ path: "*", method: RequestMethod.ALL })
   }
 }
