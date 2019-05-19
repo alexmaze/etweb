@@ -1,5 +1,5 @@
 import { Controller, Get, Render, Inject, Headers, Res } from "@nestjs/common"
-import { LanguageType } from "../main/variable.entity"
+import { LanguageType, VariableKeys } from "../main/variable.entity"
 import { BannerService } from "../main/banner.service"
 import { ProductService } from "../main/product.service"
 import { ArticleService } from "../main/article.service"

@@ -45,6 +45,7 @@ a {
   color: #ffffff;
   text-align: center;
   position: relative;
+  background-repeat: no-repeat;
 
   a {
     color: #fff;
@@ -69,8 +70,10 @@ a {
     overflow: hidden;
     opacity: 0.8;
     text-align: left;
+    margin: auto;
     margin-top: 18px;
     margin-bottom: 30px;
+    max-width: 325px;
   }
 
   .intro-content-more {
@@ -111,27 +114,31 @@ a {
     position: absolute;
     left: 0;
     bottom: 40px;
-    display: flex;
-    justify-content: space-between;
-    font-size: 16px;
-    font-weight: bold;
-    width: 100%;
     padding: 0 60px;
-    .intro-link-item {
-      div {
-        display: inline-block;
-        &.icon {
-          width: 18px;
-          height: 18px;
-          background-image: url(/images/m-icon-flag.svg);
-          background-size: contain;
-          background-position: 50% 50%;
-          background-repeat: no-repeat;
-          vertical-align: middle;
-          margin-right: 2px;
-        }
-        &.icon-honor {
-          background-image: url(/images/m-icon-honor.svg);
+    width: 100%;
+    .intro-wrapper {
+      display: flex;
+      justify-content: space-between;
+      font-size: 16px;
+      font-weight: bold;
+      max-width: 325px;
+      margin: auto;
+      .intro-link-item {
+        div {
+          display: inline-block;
+          &.icon {
+            width: 18px;
+            height: 18px;
+            background-image: url(/images/m-icon-flag.svg);
+            background-size: contain;
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            vertical-align: middle;
+            margin-right: 2px;
+          }
+          &.icon-honor {
+            background-image: url(/images/m-icon-honor.svg);
+          }
         }
       }
     }

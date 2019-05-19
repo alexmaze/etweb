@@ -24,6 +24,7 @@ export enum VariableKeys {
   Logo = "logo", // 网站 Logo 地址
   Latitude = "latitude", // 厂址纬度
   Longitude = "longitude", // 厂址经度
+  WechatQrCode = "wechat_qrcode", // 微信二维码
 
   // 首页参数
   Index2Photo = "index_2_photo", // 首页第二行图片地址
