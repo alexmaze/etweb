@@ -62,6 +62,12 @@ export class IndexController {
         subTitle: common.variables.index_2_sub_title.value,
         imageUrl: common.variables.index_2_photo.resource.rawUrl,
         text: common.variables.index_2_text.value,
+        mobileText: common.variables.index_2_text.value
+          ? common.variables.index_2_text.value
+              .replace(/<[^>]+>|&[^>]+;/g, "")
+              .trim()
+              .substr(0, 56) + "..."
+          : "",
         _more: lang === LanguageType.English ? "More" : "了解更多",
         _link_1: lang === LanguageType.English ? "Culture" : "企业文化",
         _link_1_sub:
@@ -91,7 +97,8 @@ export class IndexController {
         title: lang === LanguageType.English ? "News" : "新闻资讯",
         items: newsItems,
         _more: lang === LanguageType.English ? "More" : "了解更多"
-      }
+      },
+      _contact_us: lang === LanguageType.English ? "Contact Us" : "联系我们"
     }
 
     return res.render(

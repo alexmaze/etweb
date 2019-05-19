@@ -9,62 +9,70 @@
 
 <body>
   {{> mobile_header}}
-  {{!-- 
+
   <div class="banner">
-    {{#each banners}}
-    <div class="banner-item">
-      <img class="banner-img" src="{{resource.rawUrl}}" alt="">
-      <div class="banner-text">
-        <div class="title">{{title}}</div>
-        <div class="subTitle">{{subTitle}}</div>
+    <div class="mask">
+      <img src="{{logo.resource.rawUrl}}" alt="" class="src">
+      <div class="name">{{variables.name.value}}</div>
+      <div class="sub_name">{{variables.sub_name.value}}
       </div>
     </div>
-    {{/each}}
   </div>
 
   <div class="intro">
-    <img src="{{intro.imageUrl}}" alt="" class="intro-photo">
-    <div class="intro-text">
-      <div class="intro-title">{{intro.title}}</div>
-      <div class="intro-sub-title">{{intro.subTitle}}</div>
-      <div class="intro-content">
-        {{{intro.text}}}
-        <a class="intro-content-more" href="/about">
-          {{intro._more}}
-        </a>
-      </div>
-      <div class="intro-link">
-        <a class="intro-link-item" href="/about">
-          <div class="intro-link-title">{{intro._link_1}}</div>
-          <div class="intro-link-sub-title">{{intro._link_1_sub}}</div>
-        </a>
-        <a class="intro-link-item" href="/about/qualification">
-          <div class="intro-link-title">{{intro._link_2}}</div>
-          <div class="intro-link-sub-title">{{intro._link_2_sub}}</div>
-        </a>
-      </div>
+    <div class="intro-title with-color-tag">{{intro.title}}</div>
+    <div class="intro-content">
+      {{intro.mobileText}}
+    </div>
+    <a class="intro-content-more" href="/about">
+      {{intro._more}}
+    </a>
+
+    <div class="intro-link">
+      <a class="intro-link-item" href="/about">
+        <div class="icon icon-flag"></div>
+        <div class="intro-link-title">{{intro._link_1}}</div>
+      </a>
+      <a class="intro-link-item" href="/about/qualification">
+        <div class="icon icon-honor"></div>
+        <div class="intro-link-title">{{intro._link_2}}</div>
+      </a>
+    </div>
+
+    <div class="intro-swipe-down">
+      <div class="icon-arrow"></div>
+      <div class="icon-arrow"></div>
     </div>
   </div>
 
+
   <div class="products">
     <div class="title">{{products.title}}</div>
-    <div class="sub-title">{{products.subTitle}}</div>
+    <div class="sub-title with-color-tag">{{products.subTitle}}</div>
     <div class="products-showcase">
       {{#each products.items}}
       <div class="product-item">
         <div class="product-img" style="background-image: url({{cover.rawUrl}})"></div>
-        <div class="product-title">{{title}}</div>
+        <div class="product-info">
+          <div class="product-title">
+            {{title}}
+          </div>
+          <div class="product-content">
+            {{subTitle}}
+          </div>
+        </div>
       </div>
       {{/each}}
+      <a class="products-more" href="/product">
+        {{products._more}}
+      </a>
     </div>
-    <a class="products-more" href="/product">
-      {{products._more}}
-    </a>
   </div>
 
   <div class="looks">
-    <div class="title">{{looks.title}}</div>
-    <div class="looks-content">
+    <div class="mask">
+
+      <div class="title with-color-tag">{{looks.title}}</div>
       <div class="looks-showcase">
         {{#each looks.items}}
         <div class="look-item" data-url="{{resource.rawUrl}}">
@@ -72,24 +80,35 @@
           <div class="look-title">{{title}}</div>
         </div>
         {{/each}}
+        <a class="looks-more" href="/product">
+          {{products._more}}
+        </a>
       </div>
     </div>
   </div>
 
   <div class="pnews">
-    <div class="title">{{news.title}}</div>
-    <div class="news-content">
-      {{#each news.items}}
-      <a href="/article/detail/{{id}}" class="news-item" style="background-image: url({{cover.rawUrl}})">
-        <div class="news-title">{{title}}</div>
-        <div class="news-text">{{content}}</div>
-      </a>
-      {{/each}}
-    </div>
-    <a class="news-more" href="/article">
-      {{news._more}}
+    <div class="title with-color-tag">{{news.title}}</div>
+    {{#each news.items}}
+    <a href="/article/detail/{{id}}" class="news-item">
+      <div class="news-title">{{title}}</div>
+      <div class="news-text">{{content}}</div>
+      <div class="news-cover" style="background-image: url({{cover.rawUrl}})"></div>
     </a>
-  </div> --}}
+    {{/each}}
+  </div>
+
+  <div class="contacts">
+    <div class="icon" style="background-image: url(/images/m-icon-mobile.svg)"></div>
+    <div class="mobile">{{variables.tel.value}}</div>
+    <div class="icon" style="background-image: url(/images/m-icon-email.svg)"></div>
+    <div class="email">{{variables.email.value}}</div>
+    <div class="icon" style="background-image: url(/images/m-icon-location.svg)"></div>
+    <div class="location">{{variables.address.value}}</div>
+    <a class="link" href="/contact">
+      {{_contact_us}}
+    </a>
+  </div>
 
   {{> mobile_footer}}
   </script>

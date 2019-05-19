@@ -217,15 +217,22 @@
   background-image: url(/images/looks-background.png);
   background-position: 50% 50%;
   background-size: cover;
-  padding: 66px 0 33px 0;
-  margin: auto;
-  color: #333333;
-  text-align: center;
-  height: 806px;
-  box-sizing: border-box;
+
+  .mask {
+    padding: 66px 0 33px 0;
+    margin: auto;
+    color: #333333;
+    text-align: center;
+    height: 806px;
+    box-sizing: border-box;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
   .title {
     font-size: 32px;
     font-weight: 500;
+    color: #fff;
     &:after {
       content: "\20";
       display: block;

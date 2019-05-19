@@ -1,0 +1,406 @@
+a {
+  transition: none;
+}
+.banner {
+  height: 572px;
+  background-image: url(/images/m-index-background.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  .mask {
+    background-image: radial-gradient(
+      circle at top right,
+      rgba(35, 58, 89, 0.8) 0%,
+      rgba(0, 0, 0, 0.8) 100%
+    );
+    height: 100%;
+    color: #ffffff;
+    text-align: center;
+    img {
+      margin-top: 122px;
+      width: 96px;
+      height: 81.5px;
+    }
+    .name {
+      font-size: 20px;
+      font-weight: bold;
+      margin-top: 28px;
+    }
+    .sub_name {
+      margin-top: 7px;
+      font-size: 12px;
+      opacity: 0.5;
+    }
+  }
+}
+
+.intro {
+  height: 346.5px;
+  margin: auto;
+  margin-top: -120px;
+  background-image: url(/images/m-index-background-2.svg);
+  background-size: contain;
+  background-position: 50% 50%;
+  padding: 12px 32px;
+  color: #ffffff;
+  text-align: center;
+  position: relative;
+
+  a {
+    color: #fff;
+    transition: none;
+  }
+
+  .intro-title {
+    margin-top: 37px;
+    font-size: 16px;
+    font-weight: bold;
+    &::after {
+      height: 2px;
+      width: 19px;
+      margin: auto;
+      margin-top: 12px;
+      background: #fff;
+    }
+  }
+
+  .intro-content {
+    font-size: 12px;
+    overflow: hidden;
+    opacity: 0.8;
+    text-align: left;
+    margin-top: 18px;
+    margin-bottom: 30px;
+  }
+
+  .intro-content-more {
+    width: 160px;
+    height: 32px;
+    border: 1px solid currentColor;
+    text-align: center;
+    line-height: 32px;
+    font-size: 14px;
+    box-sizing: content-box;
+    display: inline-block;
+  }
+
+  .intro-swipe-down {
+    position: absolute;
+    left: 0;
+    bottom: 76px;
+    width: 100%;
+    .icon-arrow {
+      margin: auto;
+      background-image: url(/images/m-icon-arrow.svg);
+      background-size: contain;
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      width: 46px;
+      height: 35px;
+      opacity: 0.8;
+    }
+
+    .icon-arrow:first-child {
+      position: relative;
+      top: 23px;
+      opacity: 0.3;
+    }
+  }
+
+  .intro-link {
+    position: absolute;
+    left: 0;
+    bottom: 40px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: bold;
+    width: 100%;
+    padding: 0 60px;
+    .intro-link-item {
+      div {
+        display: inline-block;
+        &.icon {
+          width: 18px;
+          height: 18px;
+          background-image: url(/images/m-icon-flag.svg);
+          background-size: contain;
+          background-position: 50% 50%;
+          background-repeat: no-repeat;
+          vertical-align: middle;
+          margin-right: 2px;
+        }
+        &.icon-honor {
+          background-image: url(/images/m-icon-honor.svg);
+        }
+      }
+    }
+  }
+}
+
+.products {
+  margin-bottom: 4px;
+  .title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #222222;
+    text-align: center;
+    margin-top: 20px;
+  }
+  .sub-title {
+    font-size: 12px;
+    color: #999999;
+    text-align: center;
+    margin-top: 4px;
+    &::after {
+      margin: auto;
+      margin-top: 12px;
+      width: 19px;
+      height: 2px;
+    }
+  }
+
+  .products-showcase {
+    width: 100%;
+    overflow-x: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 16px;
+    .product-item {
+      margin-right: 16px;
+      width: 300px;
+      height: 180px;
+      background: #fff;
+      border-radius: 8px;
+      flex-shrink: 0;
+      box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.06);
+      position: relative;
+      padding: 0 18px 0 105px;
+
+      .product-img {
+        position: absolute;
+        left: 25px;
+        top: 32px;
+        width: 58px;
+        height: 120px;
+        background-size: cover;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+      }
+
+      .product-title {
+        margin-top: 47.5px;
+        font-size: 14px;
+        font-weight: bold;
+        color: #222222;
+        margin-bottom: 12px;
+      }
+
+      .product-content {
+        font-size: 12px;
+        color: #999999;
+      }
+    }
+    .products-more {
+      font-size: 13px;
+      color: #999999;
+      padding-top: 50px;
+      padding-right: 80px;
+      padding-left: 60px;
+      position: relative;
+      &::after {
+        content: "\20";
+        border-top: 1px solid currentColor;
+        border-right: 1px solid currentColor;
+        transform: rotate(45deg);
+        width: 10px;
+        height: 10px;
+        display: block;
+        position: absolute;
+        top: 80px;
+        right: 62px;
+      }
+    }
+  }
+}
+
+.looks {
+  background-image: url(/images/looks-background.png);
+  background-position: 50% 50%;
+  background-size: cover;
+  color: #fff;
+  text-align: center;
+  height: 212px;
+  .mask {
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  .title {
+    font-size: 16px;
+    font-weight: bold;
+    padding-top: 30px;
+    &:after {
+      margin-top: 12px;
+      width: 18px;
+      height: 2px;
+      margin: auto;
+      margin-top: 12px;
+    }
+  }
+
+  .looks-showcase {
+    width: 100%;
+    overflow-x: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 16px;
+    .look-item {
+      margin-right: 16px;
+      position: relative;
+
+      .look-img {
+        width: 144px;
+        height: 81px;
+        background-size: cover;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+      }
+
+      .look-title {
+        font-size: 12px;
+        text-align: center;
+        margin-top: 11px;
+      }
+    }
+    .looks-more {
+      font-size: 13px;
+      color: #999999;
+      padding-top: 5px;
+      padding-right: 80px;
+      padding-left: 60px;
+      position: relative;
+      &::after {
+        content: "\20";
+        border-top: 1px solid currentColor;
+        border-right: 1px solid currentColor;
+        transform: rotate(45deg);
+        width: 10px;
+        height: 10px;
+        display: block;
+        position: absolute;
+        top: 36px;
+        right: 62px;
+      }
+    }
+  }
+}
+
+.pnews {
+  background: #fff;
+  padding: 30px 0 10px;
+
+  .title {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: 333333;
+    &:after {
+      margin-top: 12px;
+      width: 18px;
+      height: 2px;
+      margin: auto;
+      margin-top: 12px;
+      margin-bottom: 10px;
+    }
+  }
+
+  .news-item {
+    border-bottom: 1px solid #e5e5e5;
+    display: block;
+    padding-right: 175px;
+    padding-left: 16px;
+    box-sizing: border-box;
+    &:last-child {
+      border-bottom: none;
+    }
+    position: relative;
+    .news-cover {
+      width: 123px;
+      height: 75.5px;
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      background-size: cover;
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+    }
+    height: 100px;
+    box-sizing: border-box;
+    .news-title {
+      font-size: 14px;
+      font-weight: bold;
+      padding-top: 12px;
+      color: #222222;
+    }
+    .news-text {
+      font-size: 12px;
+      margin-top: 16px;
+      max-height: 33px;
+      overflow: hidden;
+    }
+  }
+}
+
+.contacts {
+  height: 371px;
+  background: linear-gradient(225deg, #4fccff, #2181fe);
+  position: relative;
+  color: #ffffff;
+  &::before {
+    content: "\20";
+    position: absolute;
+    width: 13px;
+    height: 13px;
+    background: #fff;
+    transform: rotate(45deg);
+    top: -6px;
+    // left: e(`calc(50% - 12px) `);
+    left: calc(50% - 8px);
+  }
+
+  padding-top: 41.5px;
+
+  .icon {
+    margin: auto;
+    width: 24px;
+    height: 24px;
+    background-size: contain;
+  }
+
+  .mobile,
+  .email,
+  .location {
+    text-align: center;
+    margin: 6px 0 20px;
+    font-size: 14px;
+  }
+
+  .mobile {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 11px 0 11.5px;
+  }
+
+  .link {
+    width: 160px;
+    height: 32px;
+    border: 1px solid currentColor;
+    text-align: center;
+    line-height: 32px;
+    font-size: 14px;
+    box-sizing: content-box;
+    display: block;
+    margin: auto;
+    margin-top: 30px;
+  }
+}

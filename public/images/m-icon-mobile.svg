@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 8</title>
+    <desc>Created with Sketch.</desc>
+    <g id="手机端" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="首页" transform="translate(-351.000000, -3669.000000)">
+            <g id="Group-8" transform="translate(351.000000, 3669.000000)">
+                <g id="Group-7-Copy" stroke="#FFFFFF">
+                    <rect id="Rectangle" x="0.5" y="0.5" width="47" height="47" rx="23.5"></rect>
+                </g>
+                <g id="电话" transform="translate(13.333333, 13.333333)" fill="#FFFFFF">
+                    <path d="M9.59412825,12.3107524 C7.35480973,10.2020069 5.21446848,7.75900769 6.24079884,6.79334774 C7.70681322,5.41051997 8.98481,4.55933913 6.3864275,1.51151344 C3.78804503,-1.53620728 2.05480504,0.804330128 0.63267016,2.14433649 C-1.00590726,3.68960756 0.546427863,9.44958826 6.58851374,15.1439724 C12.6307827,20.8360737 18.7449637,22.301317 20.384901,20.7549177 C21.8070097,19.4160658 24.2894175,17.7843123 21.0565082,15.3347009 C17.8233898,12.8849058 16.9185256,14.0891011 15.4509945,15.4717715 C14.4248211,16.4347551 11.8334729,14.4194454 9.59412825,12.3107524 Z" id="Path"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

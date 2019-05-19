@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 6</title>
+    <desc>Created with Sketch.</desc>
+    <g id="手机端" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="首页" transform="translate(-351.000000, -3958.000000)">
+            <g id="Group-6" transform="translate(351.000000, 3958.000000)">
+                <g id="Group-8-Copy-2" stroke="#FFFFFF">
+                    <g id="Group-7-Copy">
+                        <rect id="Rectangle" x="0.5" y="0.5" width="47" height="47" rx="23.5"></rect>
+                    </g>
+                </g>
+                <g id="坐标" transform="translate(12.000000, 9.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                    <path d="M11.5,2 C5.710265,2 1,6.64986666 1,12.3645231 C1,14.2592615 1.52409,16.114441 2.53041,17.7527641 L10.774555,29.6046256 C10.9373008,29.8518545 11.2091557,30.0000179 11.5,29.9999999 C11.7908737,30.0000997 12.0627741,29.8519185 12.22548,29.6046256 L20.489855,17.7216051 C21.477555,16.1099179 22,14.2574307 22,12.3652051 C22,6.64986666 17.289875,2 11.5,2 Z M11.5,18.1538461 C8.60046,18.1538461 6.25,15.7430461 6.25,12.7692307 C6.25,9.79541537 8.60046,7.38461537 11.5,7.38461537 C14.39954,7.38461537 16.75,9.79541537 16.75,12.7692307 C16.75,15.7430461 14.39954,18.1538461 11.5,18.1538461 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
