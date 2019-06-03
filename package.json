@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "deploy": "pm2 deploy production ecosystem.config.js",
-    "deploy:jiangxi": "pm2 deploy production ecosystem.config.jiangxi.js",
+    "deploy:jiangxi": "pm2 deploy production jiangxi.config.js",
     "build": "tsc -p tsconfig.build.json",
     "format": "prettier --write \"src/**/*.ts\"",
     "dev": "npm run start:dev",

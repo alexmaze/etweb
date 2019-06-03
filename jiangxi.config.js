@@ -28,7 +28,7 @@ module.exports = {
       path: "/var/www/etweb-jiangxi",
       "pre-setup": "git reset --hard HEAD",
       "post-deploy":
-        "yarn && ln -sf /root/configs/etweb-jiangxi.json ./config/production.json && npm run prestart:prod && pm2 reload ecosystem.config.jiangxi.js --env production"
+        "yarn && ln -sf /root/configs/etweb-jiangxi.json ./config/production.json && npm run prestart:prod && pm2 reload jiangxi.config.js --env production"
     }
   }
 }
