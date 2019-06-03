@@ -1,19 +1,21 @@
 import {
   Controller,
   Get,
-  Render,
   Inject,
   Headers,
   Param,
   ParseIntPipe,
-  Query
+  Query,
+  Res
 } from "@nestjs/common"
-import { LanguageType, VariableKeys } from "../main/variable.entity"
+import { LanguageType } from "../main/variable.entity"
 import { ETWEB_LANGUAGE } from "./language.middleware"
 import { WebPosition, CommonService } from "./services/common.service"
 import { ArticleService } from "../main/article.service"
 import { ArticleType } from "../main/article.entity"
 import { IPageRes } from "../lib/page"
+import { DeviceType, ETWEB_DEVICE } from "./device.middleware"
+import { Response } from "express"
 
 @Controller("/article")
 export class ArticleController {
@@ -24,8 +26,11 @@ export class ArticleController {
   articleServ: ArticleService
 
   @Get("/")
-  @Render("article")
-  async index(@Headers(ETWEB_LANGUAGE) lang: LanguageType) {
+  async index(
+    @Res() res: Response,
+    @Headers(ETWEB_DEVICE) device: DeviceType,
+    @Headers(ETWEB_LANGUAGE) lang: LanguageType
+  ) {
     const common = await this.commonServ.getCommonData(lang, WebPosition.News)
 
     const news = await this.articleServ.list(
@@ -71,12 +76,16 @@ export class ArticleController {
       _top: lang === LanguageType.English ? "STICK" : "置顶"
     } as any
 
-    return ret
+    return res.render(
+      device === DeviceType.Desktop ? "article" : "mobile/article",
+      ret
+    )
   }
 
   @Get("/news")
-  @Render("article-news")
   async newsPage(
+    @Res() res: Response,
+    @Headers(ETWEB_DEVICE) device: DeviceType,
     @Headers(ETWEB_LANGUAGE) lang: LanguageType,
     @Query("page") page: string,
     @Query("size") size: string
@@ -122,12 +131,16 @@ export class ArticleController {
       _top: lang === LanguageType.English ? "STICK" : "置顶"
     } as any
 
-    return ret
+    return res.render(
+      device === DeviceType.Desktop ? "article-news" : "mobile/article-news",
+      ret
+    )
   }
 
   @Get("/share")
-  @Render("article-share")
   async sharePage(
+    @Res() res: Response,
+    @Headers(ETWEB_DEVICE) device: DeviceType,
     @Headers(ETWEB_LANGUAGE) lang: LanguageType,
     @Query("page") page: string,
     @Query("size") size: string
@@ -173,12 +186,16 @@ export class ArticleController {
       _top: lang === LanguageType.English ? "STICK" : "置顶"
     } as any
 
-    return ret
+    return res.render(
+      device === DeviceType.Desktop ? "article-share" : "mobile/article-share",
+      ret
+    )
   }
 
   @Get("/detail/:id")
-  @Render("article-detail")
   async detail(
+    @Res() res: Response,
+    @Headers(ETWEB_DEVICE) device: DeviceType,
     @Headers(ETWEB_LANGUAGE) lang: LanguageType,
     @Param("id", ParseIntPipe) id: number
   ) {
@@ -212,7 +229,12 @@ export class ArticleController {
       _top: lang === LanguageType.English ? "STICK" : "置顶"
     }
 
-    return ret
+    return res.render(
+      device === DeviceType.Desktop
+        ? "article-detail"
+        : "mobile/article-detail",
+      ret
+    )
   }
 }
 
