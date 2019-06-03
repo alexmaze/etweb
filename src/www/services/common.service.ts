@@ -35,7 +35,7 @@ export enum WebPosition {
   Index = "index",
   About = "about",
   Product = "product",
-  // Look = "look",
+  Look = "look",
   News = "article",
   Jobs = "jobs",
   Contact = "contact"
@@ -54,10 +54,10 @@ const menuTextMap = {
     [LanguageType.Chinese]: "产品中心",
     [LanguageType.English]: "Products"
   },
-  // [WebPosition.Look]: {
-  //   [LanguageType.Chinese]: "制造实力",
-  //   [LanguageType.English]: "Factory"
-  // },
+  [WebPosition.Look]: {
+    [LanguageType.Chinese]: "制造实力",
+    [LanguageType.English]: "Factory"
+  },
   [WebPosition.News]: {
     [LanguageType.Chinese]: "新闻资讯",
     [LanguageType.English]: "News"
@@ -73,7 +73,14 @@ const menuTextMap = {
 }
 
 export function getHeaderData(lang: LanguageType, position: WebPosition) {
-  const positions = Object.values(WebPosition) as WebPosition[]
+  const positions = [
+    WebPosition.Index,
+    WebPosition.About,
+    WebPosition.Product,
+    WebPosition.News,
+    WebPosition.Jobs,
+    WebPosition.Contact
+  ]
 
   return {
     menu: positions.map(p => ({
