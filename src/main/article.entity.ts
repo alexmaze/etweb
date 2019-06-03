@@ -32,10 +32,10 @@ export class ArticleEntity {
   @Column()
   subTitleEn: string
 
-  @Column("text")
+  @Column("longtext")
   content: string
 
-  @Column("text")
+  @Column("longtext")
   contentEn: string
 
   // 热门

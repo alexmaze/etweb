@@ -25,9 +25,9 @@ export class PositionEntity {
   @Column()
   subTitleEn: string
 
-  @Column("text")
+  @Column("longtext")
   content: string
 
-  @Column("text")
+  @Column("longtext")
   contentEn: string
 }

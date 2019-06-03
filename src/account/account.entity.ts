@@ -22,7 +22,7 @@ export class AccountEntity {
   @Column()
   password: string
 
-  @Column("text")
+  @Column("longtext")
   description: string
 
   @Column("enum", {
