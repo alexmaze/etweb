@@ -60,7 +60,9 @@ export class IndexController {
       intro: {
         title: common.variables.index_2_title.value,
         subTitle: common.variables.index_2_sub_title.value,
-        imageUrl: common.variables.index_2_photo.resource.rawUrl,
+        imageUrl:
+          common.variables.index_2_photo.resource &&
+          common.variables.index_2_photo.resource.rawUrl,
         text: common.variables.index_2_text.value,
         mobileText: common.variables.index_2_text.value
           ? common.variables.index_2_text.value
