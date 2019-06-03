@@ -1,4 +1,8 @@
-import { LanguageType, VariableKeys } from "../../main/variable.entity"
+import {
+  LanguageType,
+  VariableKeys,
+  VariableEntity
+} from "../../main/variable.entity"
 import { Injectable, Inject } from "@nestjs/common"
 import { VariableService } from "../../main/variable.service"
 
@@ -14,7 +18,7 @@ export class CommonService {
       language,
       position,
       header: getHeaderData(language, position),
-      footer: getFooterData(language, position),
+      footer: getFooterData(language, position, variables),
       title: `${variables[VariableKeys.Name].value} - ${
         menuTextMap[position][language]
       }`,
@@ -50,10 +54,10 @@ const menuTextMap = {
     [LanguageType.Chinese]: "产品中心",
     [LanguageType.English]: "Products"
   },
-  [WebPosition.Look]: {
-    [LanguageType.Chinese]: "制造实力",
-    [LanguageType.English]: "Factory"
-  },
+  // [WebPosition.Look]: {
+  //   [LanguageType.Chinese]: "制造实力",
+  //   [LanguageType.English]: "Factory"
+  // },
   [WebPosition.News]: {
     [LanguageType.Chinese]: "新闻资讯",
     [LanguageType.English]: "News"
@@ -66,58 +70,6 @@ const menuTextMap = {
     [LanguageType.Chinese]: "联系我们",
     [LanguageType.English]: "Contacts"
   }
-}
-
-const menuSubMenuMap = {
-  [WebPosition.About]: [
-    {
-      text: {
-        [LanguageType.Chinese]: "公司简介",
-        [LanguageType.English]: "Introduction"
-      }
-    },
-    {
-      text: {
-        [LanguageType.Chinese]: "荣誉资质",
-        [LanguageType.English]: "Awards"
-      }
-    }
-  ],
-  [WebPosition.Product]: [],
-  [WebPosition.Look]: [
-    {
-      text: {
-        [LanguageType.Chinese]: "厂房容貌",
-        [LanguageType.English]: "Workshop"
-      }
-    },
-    {
-      text: {
-        [LanguageType.Chinese]: "控制中心",
-        [LanguageType.English]: "Command Center"
-      }
-    },
-    {
-      text: {
-        [LanguageType.Chinese]: "物流运输",
-        [LanguageType.English]: "Transportation"
-      }
-    }
-  ],
-  [WebPosition.Contact]: [
-    {
-      text: {
-        [LanguageType.Chinese]: "24小时咨询热线：0511-86612753",
-        [LanguageType.English]: "24H Phone: 0511-86612753"
-      }
-    },
-    {
-      text: {
-        [LanguageType.Chinese]: "地址：丹阳市皇塘镇蒋墅河滨南路60号",
-        [LanguageType.English]: "Addr: NO.60 South Hebin RD. Danyang City"
-      }
-    }
-  ]
 }
 
 export function getHeaderData(lang: LanguageType, position: WebPosition) {
@@ -133,12 +85,74 @@ export function getHeaderData(lang: LanguageType, position: WebPosition) {
   }
 }
 
-export function getFooterData(lang: LanguageType, position: WebPosition) {
+export function getFooterData(
+  lang: LanguageType,
+  position: WebPosition,
+  variables: {
+    [key: string]: VariableEntity
+  }
+) {
   const positions = Object.values(WebPosition) as WebPosition[]
 
   const wechatText = {
     [LanguageType.Chinese]: "欢迎关注微信公众号",
     [LanguageType.English]: "Subscribe Wechat"
+  }
+
+  const menuSubMenuMap = {
+    [WebPosition.About]: [
+      {
+        text: {
+          [LanguageType.Chinese]: "公司简介",
+          [LanguageType.English]: "Introduction"
+        }
+      },
+      {
+        text: {
+          [LanguageType.Chinese]: "荣誉资质",
+          [LanguageType.English]: "Awards"
+        }
+      }
+    ],
+    [WebPosition.Product]: [],
+    [WebPosition.Look]: [
+      {
+        text: {
+          [LanguageType.Chinese]: "厂房容貌",
+          [LanguageType.English]: "Workshop"
+        }
+      },
+      {
+        text: {
+          [LanguageType.Chinese]: "控制中心",
+          [LanguageType.English]: "Command Center"
+        }
+      },
+      {
+        text: {
+          [LanguageType.Chinese]: "物流运输",
+          [LanguageType.English]: "Transportation"
+        }
+      }
+    ],
+    [WebPosition.Contact]: [
+      {
+        text: {
+          [LanguageType.Chinese]:
+            "24小时咨询热线：" + variables[VariableKeys.Tel].value,
+          [LanguageType.English]:
+            "24H Phone: " + variables[VariableKeys.Tel].value
+        }
+      },
+      {
+        text: {
+          [LanguageType.Chinese]:
+            "地址：" + variables[VariableKeys.Address].value,
+          [LanguageType.English]:
+            "Addr: " + variables[VariableKeys.Address].value
+        }
+      }
+    ]
   }
 
   return {
