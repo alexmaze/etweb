@@ -83,18 +83,20 @@
   </div> --}}
 
   <div class="pnews">
-    <div class="title">{{news.title}}</div>
-    <div class="news-content">
-      {{#each news.items}}
-      <a href="/article/detail/{{id}}" class="news-item" style="background-image: url({{cover.rawUrl}})">
-        <div class="news-title">{{title}}</div>
-        <div class="news-text">{{content}}</div>
+    <div class="pnews-inner">
+      <div class="title">{{news.title}}</div>
+      <div class="news-content">
+        {{#each news.items}}
+        <a href="/article/detail/{{id}}" class="news-item" style="background-image: url({{cover.rawUrl}})">
+          <div class="news-title">{{title}}</div>
+          <div class="news-text">{{content}}</div>
+        </a>
+        {{/each}}
+      </div>
+      <a class="news-more" href="/article">
+        {{news._more}}
       </a>
-      {{/each}}
     </div>
-    <a class="news-more" href="/article">
-      {{news._more}}
-    </a>
   </div>
 
   {{> footer}}
