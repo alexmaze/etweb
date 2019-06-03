@@ -35,7 +35,7 @@ export enum WebPosition {
   Index = "index",
   About = "about",
   Product = "product",
-  Look = "look",
+  // Look = "look",
   News = "article",
   Jobs = "jobs",
   Contact = "contact"
