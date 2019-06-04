@@ -117,12 +117,14 @@ export function getFooterData(
   const menuSubMenuMap = {
     [WebPosition.About]: [
       {
+        path: "",
         text: {
           [LanguageType.Chinese]: "公司简介",
           [LanguageType.English]: "Introduction"
         }
       },
       {
+        path: "/qualification",
         text: {
           [LanguageType.Chinese]: "荣誉资质",
           [LanguageType.English]: "Awards"
@@ -177,6 +179,7 @@ export function getFooterData(
       if (menuSubMenuMap[p] && menuSubMenuMap[p].length > 0) {
         items = menuSubMenuMap[p].map(i => {
           return {
+            path: i.path,
             text: i.text[lang]
           }
         })
