@@ -99,7 +99,15 @@ export function getFooterData(
     [key: string]: VariableEntity
   }
 ) {
-  const positions = Object.values(WebPosition) as WebPosition[]
+  const positions = [
+    WebPosition.Index,
+    WebPosition.About,
+    WebPosition.Product,
+    WebPosition.News,
+    WebPosition.Jobs,
+    WebPosition.Contact
+  ]
+  // const positions = Object.values(WebPosition) as WebPosition[]
 
   const wechatText = {
     [LanguageType.Chinese]: "欢迎关注微信公众号",

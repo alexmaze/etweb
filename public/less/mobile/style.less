@@ -18,7 +18,7 @@ body {
 
 a {
   color: inherit;
-  transition: all 0.2s;
+  // transition: all 0.2s;
   text-decoration: none;
   &:hover {
     color: @color-active;
@@ -33,6 +33,40 @@ a {
     height: 4px;
     background: linear-gradient(-90deg, #4fccff, #2181fe);
     margin-top: 30px;
+  }
+}
+
+.etm-header {
+  .banner {
+    height: 200px;
+    background-image: url(/images/m-index-background.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    .mask {
+      background-image: radial-gradient(
+        circle at top right,
+        rgba(35, 58, 89, 0.8) 0%,
+        rgba(0, 0, 0, 0.8) 100%
+      );
+      height: 100%;
+      color: #ffffff;
+      text-align: center;
+      img {
+        margin-top: 20px;
+        width: 48px;
+      }
+      .name {
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 28px;
+      }
+      .sub_name {
+        margin-top: 7px;
+        font-size: 12px;
+        opacity: 0.5;
+      }
+    }
   }
 }
 

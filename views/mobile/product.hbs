@@ -4,11 +4,35 @@
 <head>
   {{> mobile_base}}
   <title>{{title}}</title>
-  <link rel="stylesheet" type="text/css" href="/css/mobile/index.css" />
+  <link rel="stylesheet" type="text/css" href="/css/mobile/product.css" />
 </head>
 
 <body>
   {{> mobile_header}}
+
+  <main class="page-product">
+    <div class="products-showcase">
+      {{#each items}}
+      <a class="product-item" href="/product/{{id}}">
+        <div class="product-img" style="background-image: url({{cover.rawUrl}})"></div>
+        <div class="product-title">
+          {{title}}
+        </div>
+      </a>
+      {{/each}}
+    </div>
+
+    <div class="product-detail">
+      <article class="product-info">
+        <p class="detail-title">{{detail_title}}</p>
+        <h1 class="with-color-tag">{{selected.title}}
+          <a href="/contact" class="contact"></a>
+        </h1>
+        {{{selected.content}}}
+        <a class="contact-us" href="/contact">{{_contact_us}}</a>
+      </article>
+    </div>
+  </main>
 
 
   {{> mobile_footer}}
