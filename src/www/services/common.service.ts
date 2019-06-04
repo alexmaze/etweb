@@ -183,6 +183,7 @@ export function getFooterData(
       }
 
       return {
+        path: `/${p === "index" ? "" : p}`,
         key: p,
         text: menuTextMap[p][lang],
         selected: p === position,
