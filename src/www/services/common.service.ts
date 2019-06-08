@@ -73,6 +73,11 @@ const menuTextMap = {
 }
 
 export function getHeaderData(lang: LanguageType, position: WebPosition) {
+  const toTopText = {
+    [LanguageType.Chinese]: "返回顶部",
+    [LanguageType.English]: "TO TOP"
+  }
+
   const positions = [
     WebPosition.Index,
     WebPosition.About,
@@ -83,6 +88,7 @@ export function getHeaderData(lang: LanguageType, position: WebPosition) {
   ]
 
   return {
+    toTop: toTopText[lang],
     menu: positions.map(p => ({
       path: `/${p === "index" ? "" : p}`,
       key: p,
