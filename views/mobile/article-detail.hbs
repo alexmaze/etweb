@@ -4,12 +4,36 @@
 <head>
   {{> mobile_base}}
   <title>{{title}}</title>
-  <link rel="stylesheet" type="text/css" href="/css/mobile/index.css" />
+  <link rel="stylesheet" type="text/css" href="/css/mobile/article.css" />
 </head>
 
 <body>
   {{> mobile_header}}
 
+  <main class="etm-page page-article-detail">
+    <article class="article">
+      <h1 class="article-title">{{data.title}}</h1>
+      <p class="info">
+        <span>{{variables.name.value}}</span>
+        /
+        <span>{{data._createdAt}}</span>
+
+        <span class="view-count">
+          <i class="icon-eye"></i>
+          {{data.viewCount}}
+        </span>
+
+
+        {{#if data.isTop}}
+        <i class="icon-top">{{_top}}</i>{{/if}}
+        {{#if data.isHot}}
+        <i class="icon-hot"></i>
+        {{/if}}
+      </p>
+
+      {{{data.content}}}
+    </article>
+  </main>
 
   {{> mobile_footer}}
   </script>
