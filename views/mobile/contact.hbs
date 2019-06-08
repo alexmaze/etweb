@@ -4,14 +4,117 @@
 <head>
   {{> mobile_base}}
   <title>{{title}}</title>
-  <link rel="stylesheet" type="text/css" href="/css/mobile/index.css" />
+  <link rel="stylesheet" type="text/css" href="/css/mobile/contact.css" />
+
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=zTBWVidq9MgNYUjvQGNz1ukYdyR1U4nb"></script>
 </head>
 
 <body>
   {{> mobile_header}}
 
+  <main class="etm-page page-contact">
+    <div class="content">
+      <div class="info">
+        <div class="title with-color-tag">
+          {{title}}
+        </div>
+        <table class="info-table">
+          <tr>
+            <td>{{texts.address}}</td>
+            <td>{{address}}</td>
+          </tr>
+          <tr>
+            <td>{{texts.contact}}</td>
+            <td>{{contact}}</td>
+          </tr>
+          <tr>
+            <td>{{texts.mobile}}</td>
+            <td>{{mobile}}</td>
+          </tr>
+          <tr>
+            <td>{{texts.tel}}</td>
+            <td>{{tel}}</td>
+          </tr>
+          <tr>
+            <td>{{texts.email}}</td>
+            <td>{{email}}</td>
+          </tr>
+        </table>
+      </div>
+      <div id="map" style="height:400px;border:none;font-size:12px"></div>
+    </div>
+  </main>
 
   {{> mobile_footer}}
+
+  <script type="text/javascript">
+    //创建和初始化地图函数：
+    function initMap() {
+      createMap();//创建地图
+      setMapEvent();//设置地图事件
+      addMapControl();//向地图添加控件
+      addMapOverlay();//向地图添加覆盖物
+    }
+    function createMap() {
+      map = new BMap.Map("map");
+      map.centerAndZoom(new BMap.Point(119.782181, 31.826086), 17);
+    }
+    function setMapEvent() {
+      map.enableScrollWheelZoom();
+      map.enableKeyboard();
+      map.enableDragging();
+      map.enableDoubleClickZoom()
+    }
+    function addClickHandler(target, window) {
+      target.addEventListener("click", function () {
+        target.openInfoWindow(window);
+      });
+    }
+    function addMapOverlay() {
+      var lat = parseFloat("{{coord.lat}}")
+      var lng = parseFloat("{{coord.lng}}")
+
+      var markers = [
+        {
+          content: "<p style='font-weight: bold; color: #cc531f;'>{{title}}</p><p>{{texts.tel}}：{{tel}}</p><p>{{texts.address}}：{{address}}</p>",
+          title: "", imageOffset: { width: -46, height: -21 },
+          position: {
+            lat,
+            lng
+          }
+        }
+      ];
+      for (var index = 0; index < markers.length; index++) {
+        var point = new BMap.Point(markers[index].position.lng, markers[index].position.lat);
+        var marker = new BMap.Marker(point, {
+          icon: new BMap.Icon("http://api.map.baidu.com/lbsapi/createmap/images/icon.png", new BMap.Size(20, 25), {
+            imageOffset: new BMap.Size(markers[index].imageOffset.width, markers[index].imageOffset.height)
+          })
+        });
+        var label = new BMap.Label(markers[index].title, { offset: new BMap.Size(25, 5) });
+        var opts = {
+          width: 200,
+          title: markers[index].title,
+          enableMessage: false
+        };
+        var infoWindow = new BMap.InfoWindow(markers[index].content, opts);
+        marker.setLabel(label);
+        addClickHandler(marker, infoWindow);
+        map.addOverlay(marker);
+      };
+    }
+    //向地图添加控件
+    function addMapControl() {
+      var scaleControl = new BMap.ScaleControl({ anchor: BMAP_ANCHOR_BOTTOM_LEFT });
+      scaleControl.setUnit(BMAP_UNIT_IMPERIAL);
+      map.addControl(scaleControl);
+      var navControl = new BMap.NavigationControl({ anchor: BMAP_ANCHOR_TOP_LEFT, type: 3 });
+      map.addControl(navControl);
+      var overviewControl = new BMap.OverviewMapControl({ anchor: BMAP_ANCHOR_BOTTOM_RIGHT, isOpen: true });
+      map.addControl(overviewControl);
+    }
+    var map;
+    initMap();
   </script>
 </body>
 
