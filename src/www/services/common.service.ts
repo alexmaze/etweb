@@ -122,20 +122,20 @@ export function getFooterData(
 
   const menuSubMenuMap = {
     [WebPosition.About]: [
-      {
-        path: "",
-        text: {
-          [LanguageType.Chinese]: "公司简介",
-          [LanguageType.English]: "Introduction"
-        }
-      },
-      {
-        path: "/qualification",
-        text: {
-          [LanguageType.Chinese]: "荣誉资质",
-          [LanguageType.English]: "Awards"
-        }
-      }
+      // {
+      //   path: "",
+      //   text: {
+      //     [LanguageType.Chinese]: "公司简介",
+      //     [LanguageType.English]: "Introduction"
+      //   }
+      // },
+      // {
+      //   path: "/qualification",
+      //   text: {
+      //     [LanguageType.Chinese]: "荣誉资质",
+      //     [LanguageType.English]: "Awards"
+      //   }
+      // }
     ],
     [WebPosition.Product]: [],
     [WebPosition.Look]: [
