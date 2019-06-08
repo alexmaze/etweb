@@ -31,6 +31,10 @@ export class ArticleController {
     @Headers(ETWEB_DEVICE) device: DeviceType,
     @Headers(ETWEB_LANGUAGE) lang: LanguageType
   ) {
+    if (device === DeviceType.Mobile) {
+      return res.redirect("/article/news")
+    }
+
     const common = await this.commonServ.getCommonData(lang, WebPosition.News)
 
     const news = await this.articleServ.list(
@@ -76,10 +80,11 @@ export class ArticleController {
       _top: lang === LanguageType.English ? "STICK" : "置顶"
     } as any
 
-    return res.render(
-      device === DeviceType.Desktop ? "article" : "mobile/article",
-      ret
-    )
+    return res.render("article", ret)
+    // return res.render(
+    //   device === DeviceType.Desktop ? "article" : "mobile/article",
+    //   ret
+    // )
   }
 
   @Get("/news")
@@ -186,10 +191,11 @@ export class ArticleController {
       _top: lang === LanguageType.English ? "STICK" : "置顶"
     } as any
 
-    return res.render(
-      device === DeviceType.Desktop ? "article-share" : "mobile/article-share",
-      ret
-    )
+    // return res.render(
+    //   device === DeviceType.Desktop ? "article-share" : "mobile/article-share",
+    //   ret
+    // )
+    return res.render("article-share", ret)
   }
 
   @Get("/detail/:id")
@@ -239,7 +245,7 @@ export class ArticleController {
 }
 
 function getPagination(data: IPageRes<any>, lang: LanguageType, url: string) {
-  console.log(data.page, data.size, data.total)
+  // console.log(data.page, data.size, data.total)
   return {
     preText: lang === LanguageType.English ? "Pre" : "上一页",
     nextText: lang === LanguageType.English ? "Next" : "下一页",

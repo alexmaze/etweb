@@ -10,30 +10,19 @@
 <body>
   {{> mobile_header}}
 
-  <main class="page-product">
-    <div class="products-showcase">
-      {{#each items}}
-      <a class="product-item" href="/product/{{id}}">
-        <div class="product-img" style="background-image: url({{cover.rawUrl}})"></div>
-        <div class="product-title">
-          {{title}}
-        </div>
-      </a>
-      {{/each}}
+  <main class="etm-page page-product">
+    {{#each items}}
+    <div class="product-item">
+      <div class="product-img" style="background-image: url({{cover.rawUrl}})"></div>
+      <div class="product-title">
+        {{title}}
+      </div>
+      <div class="product-info">
+        {{{content}}}
+      </div>
     </div>
-
-    <div class="product-detail">
-      <article class="product-info">
-        <p class="detail-title">{{detail_title}}</p>
-        <h1 class="with-color-tag">{{selected.title}}
-          <a href="/contact" class="contact"></a>
-        </h1>
-        {{{selected.content}}}
-        <a class="contact-us" href="/contact">{{_contact_us}}</a>
-      </article>
-    </div>
+    {{/each}}
   </main>
-
 
   {{> mobile_footer}}
   </script>
