@@ -36,41 +36,6 @@
         </div>
       </a>
       {{/each}}
-
-      <div class="article-share-top">
-        <div class="shares-title">{{_share}}</div>
-        <div class="shares-list">
-          {{#each sharesTop}}
-          <a class="share-item" href="/article/detail/{{id}}" style="background-image: url({{cover.rawUrl}})">
-            <div class="share-title">{{title}}</div>
-            <div class="share-content">{{content}}</div>
-          </a>
-          {{/each}}
-        </div>
-      </div>
-
-      {{#each sharesLeft}}
-      <a class="article-item" href="/article/detail/{{id}}">
-        <div class="article-cover" style="background-image: url({{cover.rawUrl}})"></div>
-        <div class="article-title">
-          <span>
-            {{title}}
-          </span>
-          {{#if isHot}}
-          <i class="icon-hot"></i>
-          {{/if}}
-        </div>
-        <div class="article-info">{{content}}...</div>
-        <div class="article-sub">
-          <div>
-            {{#if isTop}}
-            <i class="icon-top">{{../_top}}</i>{{/if}}
-            <span class="article-time">{{_createdAt}}</span>
-          </div>
-          <div><i class="icon-eye"></i>{{viewCount}}</div>
-        </div>
-      </a>
-      {{/each}}
     </div>
 
     <a class="more" href="/article/news">{{_more}}</a>

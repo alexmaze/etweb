@@ -38,13 +38,8 @@ export class ArticleController {
     const common = await this.commonServ.getCommonData(lang, WebPosition.News)
 
     const news = await this.articleServ.list(
-      { page: 1, size: 2 },
+      { page: 1, size: 10 },
       ArticleType.News,
-      lang
-    )
-    const shares = await this.articleServ.list(
-      { page: 1, size: 5 },
-      ArticleType.Share,
       lang
     )
 
@@ -57,24 +52,11 @@ export class ArticleController {
       }
       item._createdAt = item.createdAt.toISOString().substr(0, 10)
     })
-    shares.data.forEach((item: any) => {
-      if (item.content) {
-        item.content = item.content
-          .replace(/<[^>]+>|&[^>]+;/g, "")
-          .trim()
-          .substr(0, 100)
-      }
-      item._createdAt = item.createdAt.toISOString().substr(0, 10)
-    })
-
-    const [s1, s2, s3, ...otherShares] = shares.data
 
     const ret = {
       ...common,
       pageTitle: lang === LanguageType.English ? "News & Share" : "新闻资讯",
       news: news.data,
-      sharesTop: [s1, s2, s3],
-      sharesLeft: otherShares,
       _share: lang === LanguageType.English ? "Shares" : "经验分享",
       _more: lang === LanguageType.English ? "More" : "加载更多",
       _top: lang === LanguageType.English ? "STICK" : "置顶"
