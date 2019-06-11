@@ -31,6 +31,8 @@ export class ArticleController {
     @Headers(ETWEB_DEVICE) device: DeviceType,
     @Headers(ETWEB_LANGUAGE) lang: LanguageType
   ) {
+    const defaultPageSize = 6
+
     if (device === DeviceType.Mobile) {
       return res.redirect("/article/news")
     }
@@ -38,7 +40,7 @@ export class ArticleController {
     const common = await this.commonServ.getCommonData(lang, WebPosition.News)
 
     const news = await this.articleServ.list(
-      { page: 1, size: 10 },
+      { page: 1, size: defaultPageSize },
       ArticleType.News,
       lang
     )
@@ -57,19 +59,18 @@ export class ArticleController {
       ...common,
       pageTitle: lang === LanguageType.English ? "News & Share" : "新闻资讯",
       news: news.data,
-      _share: lang === LanguageType.English ? "Shares" : "经验分享",
+      hasMore: news.total > defaultPageSize,
       _more: lang === LanguageType.English ? "More" : "加载更多",
       _top: lang === LanguageType.English ? "STICK" : "置顶"
     } as any
 
-    return res.render("article", ret)
-    // return res.render(
-    //   device === DeviceType.Desktop ? "article" : "mobile/article",
-    //   ret
-    // )
+    return res.render(
+      device === DeviceType.Desktop ? "article" : "mobile/article",
+      ret
+    )
   }
 
-  @Get("/news")
+  @Get("/api/list")
   async newsPage(
     @Res() res: Response,
     @Headers(ETWEB_DEVICE) device: DeviceType,
@@ -77,18 +78,16 @@ export class ArticleController {
     @Query("page") page: string,
     @Query("size") size: string
   ) {
-    const common = await this.commonServ.getCommonData(lang, WebPosition.News)
-
     page = page || "1"
-    size = size || "10"
+    size = size || "6"
 
-    const data = await this.articleServ.list(
+    const ret = await this.articleServ.list(
       { page: parseInt(page, 10), size: parseInt(size, 10) },
       ArticleType.News,
       lang
     )
 
-    data.data.forEach((item: any) => {
+    ret.data.forEach((item: any) => {
       if (item.content) {
         item.content = item.content
           .replace(/<[^>]+>|&[^>]+;/g, "")
@@ -98,86 +97,9 @@ export class ArticleController {
       item._createdAt = item.createdAt.toISOString().substr(0, 10)
     })
 
-    const ret = {
-      ...common,
-      pageTitle: lang === LanguageType.English ? "News" : "新闻资讯",
-      data,
-      menu: [
-        {
-          title: lang === LanguageType.English ? "News" : "新闻资讯",
-          href: "/article/news",
-          selected: true
-        },
-        {
-          title: lang === LanguageType.English ? "Share" : "经验分享",
-          href: "/article/share",
-          selected: false
-        }
-      ],
-      pagination: getPagination(data, lang, "/article/news"),
-      _top: lang === LanguageType.English ? "STICK" : "置顶"
-    } as any
+    ret["_top"] = lang === LanguageType.English ? "STICK" : "置顶"
 
-    return res.render(
-      device === DeviceType.Desktop ? "article-news" : "mobile/article-news",
-      ret
-    )
-  }
-
-  @Get("/share")
-  async sharePage(
-    @Res() res: Response,
-    @Headers(ETWEB_DEVICE) device: DeviceType,
-    @Headers(ETWEB_LANGUAGE) lang: LanguageType,
-    @Query("page") page: string,
-    @Query("size") size: string
-  ) {
-    const common = await this.commonServ.getCommonData(lang, WebPosition.News)
-
-    page = page || "1"
-    size = size || "10"
-
-    const data = await this.articleServ.list(
-      { page: parseInt(page, 10), size: parseInt(size, 10) },
-      ArticleType.Share,
-      lang
-    )
-
-    data.data.forEach((item: any) => {
-      if (item.content) {
-        item.content = item.content
-          .replace(/<[^>]+>|&[^>]+;/g, "")
-          .trim()
-          .substr(0, 100)
-      }
-      item._createdAt = item.createdAt.toISOString().substr(0, 10)
-    })
-
-    const ret = {
-      ...common,
-      pageTitle: lang === LanguageType.English ? "Share" : "经验分享",
-      data,
-      menu: [
-        {
-          title: lang === LanguageType.English ? "News" : "新闻资讯",
-          href: "/article/news",
-          selected: false
-        },
-        {
-          title: lang === LanguageType.English ? "Share" : "经验分享",
-          href: "/article/share",
-          selected: true
-        }
-      ],
-      pagination: getPagination(data, lang, "/article/share"),
-      _top: lang === LanguageType.English ? "STICK" : "置顶"
-    } as any
-
-    // return res.render(
-    //   device === DeviceType.Desktop ? "article-share" : "mobile/article-share",
-    //   ret
-    // )
-    return res.render("article-share", ret)
+    return res.json(ret)
   }
 
   @Get("/detail/:id")
@@ -223,17 +145,5 @@ export class ArticleController {
         : "mobile/article-detail",
       ret
     )
-  }
-}
-
-function getPagination(data: IPageRes<any>, lang: LanguageType, url: string) {
-  // console.log(data.page, data.size, data.total)
-  return {
-    preText: lang === LanguageType.English ? "Pre" : "上一页",
-    nextText: lang === LanguageType.English ? "Next" : "下一页",
-    hasNext: data.page * data.size < data.total,
-    hasPre: data.page > 1,
-    preUrl: `${url}?page=${data.page - 1}&size=${data.size}`,
-    nextUrl: `${url}?page=${data.page + 1}&size=${data.size}`
   }
 }
