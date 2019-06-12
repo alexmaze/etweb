@@ -117,8 +117,8 @@ export function getFooterData(
   // const positions = Object.values(WebPosition) as WebPosition[]
 
   const copyrightText = {
-    [LanguageType.Chinese]: variables[VariableKeys.Name] + " ©版权所有",
-    [LanguageType.English]: variables[VariableKeys.Name] + " ©Reserved"
+    [LanguageType.Chinese]: variables[VariableKeys.Name].value + " ©版权所有",
+    [LanguageType.English]: variables[VariableKeys.Name].value + " ©Reserved"
   }
 
   const wechatText = {
