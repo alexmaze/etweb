@@ -37,7 +37,7 @@ export class IndexController {
     const common = await this.commonServ.getCommonData(lang, WebPosition.Index)
     const products = await this.productServ.list({ page: 1, size: 6 }, lang)
     const news = await this.articleServ.list(
-      { page: 1, size: 6 },
+      { page: 1, size: 3 },
       ArticleType.News,
       lang
     )

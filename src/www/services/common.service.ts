@@ -116,6 +116,11 @@ export function getFooterData(
   ]
   // const positions = Object.values(WebPosition) as WebPosition[]
 
+  const copyrightText = {
+    [LanguageType.Chinese]: variables[VariableKeys.Name] + " ©版权所有",
+    [LanguageType.English]: variables[VariableKeys.Name] + " ©Reserved"
+  }
+
   const wechatText = {
     [LanguageType.Chinese]: "欢迎关注微信公众号",
     [LanguageType.English]: "Subscribe Wechat"
@@ -181,6 +186,7 @@ export function getFooterData(
 
   return {
     wechat: wechatText[lang],
+    copyright: copyrightText[lang],
     menu: positions.map(p => {
       let items = []
       if (menuSubMenuMap[p] && menuSubMenuMap[p].length > 0) {
