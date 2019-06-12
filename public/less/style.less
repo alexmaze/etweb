@@ -154,9 +154,31 @@ a {
 
 .et-footer {
   background: #000000;
+  position: relative;
   a {
     cursor: pointer;
     color: inherit;
+  }
+
+  .beian {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    .beian_img {
+      display: inline-block;
+      width: 14px;
+      height: 16px;
+      margin-right: 6px;
+      background: url(/images/icon-police.png) 0 0 no-repeat;
+      vertical-align: middle;
+    }
+    .beian_code {
+      vertical-align: middle;
+      font-size: 12px;
+      color: white;
+    }
   }
 
   min-height: 259px;
