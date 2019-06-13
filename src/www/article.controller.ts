@@ -33,10 +33,6 @@ export class ArticleController {
   ) {
     const defaultPageSize = 6
 
-    if (device === DeviceType.Mobile) {
-      return res.redirect("/article/news")
-    }
-
     const common = await this.commonServ.getCommonData(lang, WebPosition.News)
 
     const news = await this.articleServ.list(
