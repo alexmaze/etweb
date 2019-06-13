@@ -12,8 +12,8 @@
 
   <main class="etm-page page-article-news">
 
-    <div class="article-list">
-      {{#each data.data}}
+    <div id="article-list" class="article-list">
+      {{#each news}}
       <a class="article-item" href="/article/detail/{{id}}">
         <div class="article-cover" style="background-image: url({{cover.rawUrl}})"></div>
         <div class="article-title">
@@ -37,18 +37,94 @@
       {{/each}}
     </div>
 
-    <div class="pagination">
-      {{#if pagination.hasPre}}
-      <a href="{{pagination.preUrl}}">{{pagination.preText}}</a>
-      {{/if}}
-      {{#if pagination.hasNext}}
-      <a href="{{pagination.nextUrl}}">{{pagination.nextText}}</a>
-      {{/if}}
-    </div>
+
+    {{#if hasMore}}
+    <a id="more" class="more">{{_more}}</a>
+    {{/if}}
+
   </main>
 
 
   </div>
+
+
+  <script>
+    (function () {
+      var page = 2;
+      var pageSize = 3;
+      var isLoading = false;
+
+      function setLoading(newLoading) {
+        isLoading = newLoading
+        var _more = "{{_more}}";
+        document.getElementById("more").innerText = isLoading ? "Loading..." : _more;
+      }
+
+      function loadMore() {
+        page++;
+        setLoading(true)
+        $.getJSON(`/article/api/list?page=${page}&size=${pageSize}`)
+          .done(function (data) {
+            insertNewItems(data)
+          })
+          .fail(function (err) {
+            console.log("load fail", err);
+          })
+          .always(function () {
+            setLoading(false);
+          })
+      }
+
+      function getNodes(items, _top) {
+        return items.map(item => {
+          var a = document.createElement("a")
+          a.setAttribute("class", "article-item")
+          a.setAttribute("href", "/article/detail/" + item.id)
+
+          var htmls = [
+            "<div class='article-cover' style='background-image: url(" + item && item.cover && item.cover.rawUrl + ")'></div>",
+            "<div class='article-title'>",
+            "<span>" + item.title + "</span>",
+            item.isHot ?
+              "<i class='icon-hot'></i>" : "",
+            "</div>",
+            "<div class='article-info'>" + item.content + "...</div>",
+            "<div class='article-sub'>",
+            "<div>",
+            item.isTop ? "<i class='icon-top'>" + _top + "</i>" : "",
+            "<span class='article-time'>" + item._createdAt + "</span>",
+            "</div>",
+            "<div><i class='icon-eye'></i>" + item.viewCount + "</div>",
+            "</div>"
+          ]
+
+          a.innerHTML = htmls.join("\n")
+
+          return a
+        })
+      }
+
+      function insertNewItems(pageData) {
+        if (pageData == null) {
+          return
+        }
+
+        if (pageData.total <= (pageData.page * pageData.size)) {
+          document.getElementById("more").style.display = "none"
+        }
+
+
+        var listEl = document.getElementById("article-list")
+        listEl.append.apply(listEl, getNodes(pageData.data, pageData._top))
+      }
+
+      document.getElementById("more").addEventListener("click", function () {
+        if (!isLoading) {
+          loadMore();
+        }
+      })
+    })()
+  </script>
 
   {{> mobile_footer}}
 </body>
