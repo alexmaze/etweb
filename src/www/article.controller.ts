@@ -127,15 +127,15 @@ export class ArticleController {
 
     data._createdAt = data.createdAt.toISOString().substr(0, 10)
 
-    if (lang === LanguageType.English) {
-      data.title = data.titleEn
-      data.subTitle = data.subTitleEn
-      data.content = data.contentEn
-    }
-
     const ret = {
       ...common,
-      data,
+      data: {
+        ...data,
+        title: lang === LanguageType.English ? data.titleEn : data.title,
+        subTitle:
+          lang === LanguageType.English ? data.subTitleEn : data.subTitle,
+        content: lang === LanguageType.English ? data.contentEn : data.content
+      },
       others: others.data,
       _others: lang === LanguageType.English ? "Others" : "其他资讯",
       _top: lang === LanguageType.English ? "STICK" : "置顶"
