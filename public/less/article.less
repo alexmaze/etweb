@@ -11,10 +11,14 @@
     }
   }
 
+  .article-list {
+    margin-bottom: 40px;
+  }
+
   .more {
     display: block;
     width: 1200px;
-    margin: 40px auto;
+    margin: 0 auto 40px auto;
     background: #aaaaaa;
     line-height: 60px;
     text-align: center;
@@ -101,6 +105,11 @@
     }
   }
 
+  img {
+    max-width: 100%;
+    max-height: 664px;
+  }
+
   h3 {
     font-size: 20px;
     color: #222222;
@@ -110,6 +119,9 @@
 }
 
 .page-article-list {
+  padding: 40px 0;
+  position: relative;
+
   .article-menu {
     width: 1200px;
     margin: 20px auto;
@@ -238,6 +250,24 @@
       padding: 94px 0 0 18px;
       box-sizing: border-box;
       display: block;
+
+      position: relative;
+      &:before {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        content: "\20";
+        left: 0;
+        top: 0;
+        z-index: 1;
+        background-image: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0) 0%,
+          rgba(0, 0, 0, 0.3) 60%,
+          rgba(0, 0, 0, 0.6) 100%
+        );
+      }
+
       &:hover {
         box-shadow: 0 0 18px 3px #00000036;
       }
@@ -245,6 +275,8 @@
         font-size: 16px;
         font-weight: bold;
         margin-bottom: 4px;
+        position: relative;
+        z-index: 2;
       }
       .share-content {
         font-size: 12px;
@@ -252,6 +284,8 @@
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+        position: relative;
+        z-index: 2;
       }
     }
   }

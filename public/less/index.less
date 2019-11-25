@@ -347,11 +347,15 @@
 }
 
 .pnews {
-  padding: 58px 0;
-  width: 1200px;
-  margin: auto;
-  color: #333333;
-  text-align: center;
+  background: white;
+  .pnews-inner {
+    text-align: center;
+    color: #333333;
+    margin: auto;
+    padding: 58px 0;
+    width: 1200px;
+  }
+
   .title {
     font-size: 32px;
     font-weight: 500;
@@ -404,11 +408,32 @@
       box-sizing: border-box;
       display: block;
       cursor: pointer;
+      overflow: hidden;
+
+      position: relative;
+      &:before {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        content: "\20";
+        left: 0;
+        top: 0;
+        z-index: 1;
+        background-image: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0) 0%,
+          rgba(0, 0, 0, 0.3) 60%,
+          rgba(0, 0, 0, 0.6) 100%
+        );
+      }
+
       .news-title {
         font-size: 16px;
         font-weight: bold;
         margin-bottom: 5px;
         margin-top: 75px;
+        position: relative;
+        z-index: 2;
       }
       .news-text {
         white-space: nowrap;
@@ -416,6 +441,8 @@
         overflow: hidden;
         text-overflow: ellipsis;
         font-size: 12px;
+        position: relative;
+        z-index: 2;
       }
     }
   }

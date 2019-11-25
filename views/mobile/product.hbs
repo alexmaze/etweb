@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="{{lang}}">
+
+<head>
+  {{> mobile_base}}
+  <title>{{title}}</title>
+  <link rel="stylesheet" type="text/css" href="/css/mobile/product.css" />
+</head>
+
+<body>
+  {{> mobile_header}}
+
+  <main class="etm-page page-product">
+    {{#each items}}
+    <div class="product-item">
+      <div class="product-img" style="background-image: url({{cover.rawUrl}})"></div>
+      <div class="product-title">
+        {{title}}
+      </div>
+      <div class="product-info">
+        {{{content}}}
+      </div>
+    </div>
+    {{/each}}
+  </main>
+
+  {{> mobile_footer}}
+</body>
+
+</html>

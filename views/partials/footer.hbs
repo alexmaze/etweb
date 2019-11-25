@@ -5,10 +5,10 @@
       {{#each footer.menu}}
 
       <div class="menu-item {{key}}">
-        <a class="title">{{text}}</a>
+        <a href="{{path}}" class="title">{{text}}</a>
         <div class="sub-items">
           {{#each items}}
-          <a class="sub-item">{{text}}</a>
+          <a href="{{../path}}{{path}}" class="sub-item">{{text}}</a>
           {{/each}}
         </div>
       </div>
@@ -20,6 +20,16 @@
       <img src="{{variables.wechat_qrcode.resource.rawUrl}}" alt="">
       <figcaption>{{footer.wechat}}</figcaption>
     </figure>
+  </div>
+
+  <div class="beian">
+    <div>{{footer.copyright}}</div>
+    <a href="http://www.beian.miit.gov.cn/" target="_blank">
+      <i class="beian_img"></i>
+      <span class="beian_code">
+        苏ICP备19029916号-1
+      </span>
+    </a>
   </div>
 
 </footer>

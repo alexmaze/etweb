@@ -17,12 +17,14 @@ export class ArticleService {
   ) {}
 
   async list(params: IPageReq, type?: ArticleType, lang?: LanguageType) {
-    const res = await new Pager(params, this.repo).getPage(
+    const res = await new Pager(params, this.repo).getPage2(
       !!type
         ? {
             type
           }
         : null,
+      "isTop",
+      "DESC",
       "createdAt",
       "DESC"
     )

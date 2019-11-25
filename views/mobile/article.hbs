@@ -2,16 +2,15 @@
 <html lang="{{lang}}">
 
 <head>
-  {{> base}}
+  {{> mobile_base}}
   <title>{{title}}</title>
-  <link rel="stylesheet" type="text/css" href="/css/article.css" />
+  <link rel="stylesheet" type="text/css" href="/css/mobile/article.css" />
 </head>
 
 <body>
-  {{> header}}
+  {{> mobile_header}}
 
-  <main class="page-article">
-    <h1 class="with-color-tag">{{pageTitle}}</h1>
+  <main class="etm-page page-article-news">
 
     <div id="article-list" class="article-list">
       {{#each news}}
@@ -38,11 +37,16 @@
       {{/each}}
     </div>
 
+
     {{#if hasMore}}
     <a id="more" class="more">{{_more}}</a>
     {{/if}}
 
   </main>
+
+
+  </div>
+
 
   <script>
     (function () {
@@ -122,7 +126,7 @@
     })()
   </script>
 
-  {{> footer}}
+  {{> mobile_footer}}
 </body>
 
 </html>

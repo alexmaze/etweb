@@ -1,7 +1,17 @@
-import { Controller, Get, Render, Inject, Headers, Param } from "@nestjs/common"
+import {
+  Controller,
+  Get,
+  Render,
+  Inject,
+  Headers,
+  Param,
+  Res
+} from "@nestjs/common"
 import { LanguageType, VariableKeys } from "../main/variable.entity"
 import { ETWEB_LANGUAGE } from "./language.middleware"
 import { WebPosition, CommonService } from "./services/common.service"
+import { Response } from "express"
+import { ETWEB_DEVICE, DeviceType } from "./device.middleware"
 
 @Controller("/contact")
 export class ContactController {
@@ -9,8 +19,11 @@ export class ContactController {
   commonServ: CommonService
 
   @Get("/")
-  @Render("contact")
-  async index(@Headers(ETWEB_LANGUAGE) lang: LanguageType) {
+  async index(
+    @Res() res: Response,
+    @Headers(ETWEB_DEVICE) device: DeviceType,
+    @Headers(ETWEB_LANGUAGE) lang: LanguageType
+  ) {
     const common = await this.commonServ.getCommonData(
       lang,
       WebPosition.Contact
@@ -38,6 +51,9 @@ export class ContactController {
       }
     }
 
-    return ret
+    return res.render(
+      device === DeviceType.Desktop ? "contact" : "mobile/contact",
+      ret
+    )
   }
 }

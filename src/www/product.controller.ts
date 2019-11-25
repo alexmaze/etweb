@@ -1,16 +1,18 @@
 import {
   Controller,
   Get,
-  Render,
   Inject,
   Headers,
   Param,
-  ParseIntPipe
+  ParseIntPipe,
+  Res
 } from "@nestjs/common"
 import { LanguageType } from "../main/variable.entity"
 import { ETWEB_LANGUAGE } from "./language.middleware"
 import { WebPosition, CommonService } from "./services/common.service"
 import { ProductService } from "../main/product.service"
+import { ETWEB_DEVICE, DeviceType } from "./device.middleware"
+import { Response } from "express"
 
 @Controller("/product")
 export class ProductController {
@@ -21,21 +23,30 @@ export class ProductController {
   productServ: ProductService
 
   @Get("/:id")
-  @Render("product")
   async detail(
+    @Res() res: Response,
+    @Headers(ETWEB_DEVICE) device: DeviceType,
     @Headers(ETWEB_LANGUAGE) lang: LanguageType,
     @Param("id", ParseIntPipe) id: number
   ) {
-    return this.renderById(lang, id)
+    return this.renderById(res, device, lang, id)
   }
 
   @Get("/")
-  @Render("product")
-  async index(@Headers(ETWEB_LANGUAGE) lang: LanguageType) {
-    return this.renderById(lang)
+  async index(
+    @Res() res: Response,
+    @Headers(ETWEB_DEVICE) device: DeviceType,
+    @Headers(ETWEB_LANGUAGE) lang: LanguageType
+  ) {
+    return this.renderById(res, device, lang)
   }
 
-  async renderById(lang: LanguageType, id?: number) {
+  async renderById(
+    res: Response,
+    device: DeviceType,
+    lang: LanguageType,
+    id?: number
+  ) {
     const common = await this.commonServ.getCommonData(
       lang,
       WebPosition.Product
@@ -63,6 +74,9 @@ export class ProductController {
       _contact_us: lang === LanguageType.English ? "Contact Us" : "联系我们"
     }
 
-    return ret
+    return res.render(
+      device === DeviceType.Desktop ? "product" : "mobile/product",
+      ret
+    )
   }
 }

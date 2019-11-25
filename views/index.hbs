@@ -65,7 +65,7 @@
       {{products._more}}
     </a>
   </div>
-
+  {{!-- 
   <div class="looks">
     <div class="mask">
       <div class="title">{{looks.title}}</div>
@@ -80,21 +80,23 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> --}}
 
   <div class="pnews">
-    <div class="title">{{news.title}}</div>
-    <div class="news-content">
-      {{#each news.items}}
-      <a href="/article/detail/{{id}}" class="news-item" style="background-image: url({{cover.rawUrl}})">
-        <div class="news-title">{{title}}</div>
-        <div class="news-text">{{content}}</div>
+    <div class="pnews-inner">
+      <div class="title">{{news.title}}</div>
+      <div class="news-content">
+        {{#each news.items}}
+        <a href="/article/detail/{{id}}" class="news-item" style="background-image: url({{cover.rawUrl}})">
+          <div class="news-title">{{title}}</div>
+          <div class="news-text">{{content}}</div>
+        </a>
+        {{/each}}
+      </div>
+      <a class="news-more" href="/article">
+        {{news._more}}
       </a>
-      {{/each}}
     </div>
-    <a class="news-more" href="/article">
-      {{news._more}}
-    </a>
   </div>
 
   {{> footer}}
@@ -119,6 +121,7 @@
       cssEase: 'linear',
       arrows: true
     });
+    /*
     $('.looks-showcase').slick({
       dots: false,
       infinite: true,
@@ -149,6 +152,7 @@
       $(".looks-content")[0].style.backgroundImage = `url(${url})`
 
     }, 100)
+    */
   </script>
 </body>
 

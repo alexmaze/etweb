@@ -47,6 +47,52 @@ a {
   justify-content: space-between;
   font-size: 16px;
 
+  #back-to-top {
+    position: fixed;
+    right: 50px;
+    bottom: 80px;
+    background: #000;
+    color: #fff;
+    font-size: 14px;
+    z-index: 100000;
+    width: 80px;
+    height: 38px;
+    line-height: 38px;
+    padding-left: 38px;
+    cursor: pointer;
+    opacity: 0.4;
+    transition: opacity 0.2s ease-in-out;
+    display: none;
+    border: 1px solid currentColor;
+
+    &:hover {
+      opacity: 1;
+    }
+    &:after {
+      content: "\20";
+      display: block;
+      width: 22px;
+      height: 13px;
+      background: #000;
+      z-index: 10;
+      top: 24px;
+      position: absolute;
+      left: 10px;
+    }
+    &:before {
+      content: "\20";
+      z-index: 9;
+      display: block;
+      width: 11px;
+      height: 11px;
+      border: 1px solid #fff;
+      position: absolute;
+      left: 16px;
+      top: 17px;
+      transform: rotate(45deg);
+    }
+  }
+
   a {
     cursor: pointer;
   }
@@ -58,6 +104,8 @@ a {
       width: 60px;
       height: 51px;
       margin-right: 20px;
+      flex-shrink: 0;
+      flex-grow: 0;
     }
     .names {
       display: flex;
@@ -106,9 +154,31 @@ a {
 
 .et-footer {
   background: #000000;
+  position: relative;
   a {
     cursor: pointer;
     color: inherit;
+  }
+
+  .beian {
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    color: white;
+    .beian_img {
+      display: inline-block;
+      width: 14px;
+      height: 16px;
+      margin-right: 6px;
+      background: url(/images/icon-police.png) 0 0 no-repeat;
+      vertical-align: middle;
+    }
+    .beian_code {
+      vertical-align: middle;
+    }
   }
 
   min-height: 259px;

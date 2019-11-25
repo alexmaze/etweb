@@ -1,4 +1,8 @@
-import { LanguageType, VariableKeys } from "../../main/variable.entity"
+import {
+  LanguageType,
+  VariableKeys,
+  VariableEntity
+} from "../../main/variable.entity"
 import { Injectable, Inject } from "@nestjs/common"
 import { VariableService } from "../../main/variable.service"
 
@@ -14,10 +18,11 @@ export class CommonService {
       language,
       position,
       header: getHeaderData(language, position),
-      footer: getFooterData(language, position),
+      footer: getFooterData(language, position, variables),
       title: `${variables[VariableKeys.Name].value} - ${
         menuTextMap[position][language]
       }`,
+      subTitle: menuTextMap[position][language],
       favicon: variables[VariableKeys.Favicon],
       logo: variables[VariableKeys.Logo],
       variables
@@ -68,62 +73,23 @@ const menuTextMap = {
   }
 }
 
-const menuSubMenuMap = {
-  [WebPosition.About]: [
-    {
-      text: {
-        [LanguageType.Chinese]: "公司简介",
-        [LanguageType.English]: "Introduction"
-      }
-    },
-    {
-      text: {
-        [LanguageType.Chinese]: "荣誉资质",
-        [LanguageType.English]: "Awards"
-      }
-    }
-  ],
-  [WebPosition.Product]: [],
-  [WebPosition.Look]: [
-    {
-      text: {
-        [LanguageType.Chinese]: "厂房容貌",
-        [LanguageType.English]: "Workshop"
-      }
-    },
-    {
-      text: {
-        [LanguageType.Chinese]: "控制中心",
-        [LanguageType.English]: "Command Center"
-      }
-    },
-    {
-      text: {
-        [LanguageType.Chinese]: "物流运输",
-        [LanguageType.English]: "Transportation"
-      }
-    }
-  ],
-  [WebPosition.Contact]: [
-    {
-      text: {
-        [LanguageType.Chinese]: "24小时咨询热线：0511-86612753",
-        [LanguageType.English]: "24H Phone: 0511-86612753"
-      }
-    },
-    {
-      text: {
-        [LanguageType.Chinese]: "地址：丹阳市皇塘镇蒋墅河滨南路60号",
-        [LanguageType.English]: "Addr: NO.60 South Hebin RD. Danyang City"
-      }
-    }
-  ]
-}
-
 export function getHeaderData(lang: LanguageType, position: WebPosition) {
-  const positions = Object.values(WebPosition) as WebPosition[]
+  const toTopText = {
+    [LanguageType.Chinese]: "返回顶部",
+    [LanguageType.English]: "TO TOP"
+  }
+
+  const positions = [
+    WebPosition.Index,
+    WebPosition.About,
+    WebPosition.Product,
+    WebPosition.News,
+    WebPosition.Jobs,
+    WebPosition.Contact
+  ]
 
   return {
+    toTop: toTopText[lang],
     menu: positions.map(p => ({
       path: `/${p === "index" ? "" : p}`,
       key: p,
@@ -133,27 +99,107 @@ export function getHeaderData(lang: LanguageType, position: WebPosition) {
   }
 }
 
-export function getFooterData(lang: LanguageType, position: WebPosition) {
-  const positions = Object.values(WebPosition) as WebPosition[]
+export function getFooterData(
+  lang: LanguageType,
+  position: WebPosition,
+  variables: {
+    [key: string]: VariableEntity
+  }
+) {
+  const positions = [
+    WebPosition.Index,
+    WebPosition.About,
+    WebPosition.Product,
+    WebPosition.News,
+    WebPosition.Jobs,
+    WebPosition.Contact
+  ]
+  // const positions = Object.values(WebPosition) as WebPosition[]
+
+  const copyrightText = {
+    [LanguageType.Chinese]: variables[VariableKeys.Name].value + " ©版权所有",
+    [LanguageType.English]: variables[VariableKeys.Name].value + " ©Reserved"
+  }
 
   const wechatText = {
     [LanguageType.Chinese]: "欢迎关注微信公众号",
     [LanguageType.English]: "Subscribe Wechat"
   }
 
+  const menuSubMenuMap = {
+    [WebPosition.About]: [
+      // {
+      //   path: "",
+      //   text: {
+      //     [LanguageType.Chinese]: "公司简介",
+      //     [LanguageType.English]: "Introduction"
+      //   }
+      // },
+      // {
+      //   path: "/qualification",
+      //   text: {
+      //     [LanguageType.Chinese]: "荣誉资质",
+      //     [LanguageType.English]: "Awards"
+      //   }
+      // }
+    ],
+    [WebPosition.Product]: [],
+    [WebPosition.Look]: [
+      {
+        text: {
+          [LanguageType.Chinese]: "厂房容貌",
+          [LanguageType.English]: "Workshop"
+        }
+      },
+      {
+        text: {
+          [LanguageType.Chinese]: "控制中心",
+          [LanguageType.English]: "Command Center"
+        }
+      },
+      {
+        text: {
+          [LanguageType.Chinese]: "物流运输",
+          [LanguageType.English]: "Transportation"
+        }
+      }
+    ],
+    [WebPosition.Contact]: [
+      {
+        text: {
+          [LanguageType.Chinese]:
+            "24小时咨询热线：" + variables[VariableKeys.Tel].value,
+          [LanguageType.English]:
+            "24H Phone: " + variables[VariableKeys.Tel].value
+        }
+      },
+      {
+        text: {
+          [LanguageType.Chinese]:
+            "地址：" + variables[VariableKeys.Address].value,
+          [LanguageType.English]:
+            "Addr: " + variables[VariableKeys.Address].value
+        }
+      }
+    ]
+  }
+
   return {
     wechat: wechatText[lang],
+    copyright: copyrightText[lang],
     menu: positions.map(p => {
       let items = []
       if (menuSubMenuMap[p] && menuSubMenuMap[p].length > 0) {
         items = menuSubMenuMap[p].map(i => {
           return {
+            path: i.path,
             text: i.text[lang]
           }
         })
       }
 
       return {
+        path: `/${p === "index" ? "" : p}`,
         key: p,
         text: menuTextMap[p][lang],
         selected: p === position,

@@ -51,7 +51,7 @@ export class VariableEntity {
   })
   language: LanguageType
 
-  @Column("text")
+  @Column("longtext")
   value: string
 
   @ManyToOne(type => ResourceEntity)
