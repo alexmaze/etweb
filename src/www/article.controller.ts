@@ -204,6 +204,12 @@ export class ArticleController {
 
     data._createdAt = data.createdAt.toISOString().substr(0, 10)
 
+    if (lang === LanguageType.English) {
+      data.title = data.titleEn
+      data.subTitle = data.subTitleEn
+      data.content = data.contentEn
+    }
+
     const ret = {
       ...common,
       data,
